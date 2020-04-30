@@ -15,10 +15,11 @@
  */
 package jp.classmethod.aws.reboot.gradle.ec2;
 
-import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
 import org.gradle.api.Project;
 
 import com.amazonaws.services.ec2.AmazonEC2Client;
+
+import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
 
 public class AmazonEC2PluginExtension extends BaseRegionAwarePluginExtension<AmazonEC2Client> {
 	

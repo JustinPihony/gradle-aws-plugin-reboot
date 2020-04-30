@@ -15,10 +15,11 @@
  */
 package jp.classmethod.aws.reboot.gradle.sns;
 
-import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
 import org.gradle.api.Project;
 
 import com.amazonaws.services.sns.AmazonSNSClient;
+
+import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
 
 public class AmazonSNSPluginExtension extends BaseRegionAwarePluginExtension<AmazonSNSClient> {
 	

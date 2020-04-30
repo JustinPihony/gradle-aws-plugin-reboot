@@ -29,6 +29,7 @@ public enum Tier {
 		.withName("Worker")
 		.withVersion("1.0"));
 	
+	
 	final EnvironmentTier environmentTier;
 	
 	

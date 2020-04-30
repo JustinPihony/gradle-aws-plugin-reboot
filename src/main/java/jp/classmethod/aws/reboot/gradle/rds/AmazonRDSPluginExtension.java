@@ -15,10 +15,11 @@
  */
 package jp.classmethod.aws.reboot.gradle.rds;
 
-import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
 import org.gradle.api.Project;
 
 import com.amazonaws.services.rds.AmazonRDSClient;
+
+import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
 
 public class AmazonRDSPluginExtension extends BaseRegionAwarePluginExtension<AmazonRDSClient> {
 	

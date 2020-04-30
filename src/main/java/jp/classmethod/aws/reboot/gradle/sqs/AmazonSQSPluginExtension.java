@@ -15,10 +15,11 @@
  */
 package jp.classmethod.aws.reboot.gradle.sqs;
 
-import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
 import org.gradle.api.Project;
 
 import com.amazonaws.services.sqs.AmazonSQSClient;
+
+import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
 
 public class AmazonSQSPluginExtension extends BaseRegionAwarePluginExtension<AmazonSQSClient> {
 	

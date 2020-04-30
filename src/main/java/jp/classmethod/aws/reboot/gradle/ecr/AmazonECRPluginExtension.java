@@ -15,13 +15,14 @@
  */
 package jp.classmethod.aws.reboot.gradle.ecr;
 
-import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
 import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.Project;
 
 import com.amazonaws.services.ecr.AmazonECRClient;
+
+import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
 
 public class AmazonECRPluginExtension extends BaseRegionAwarePluginExtension<AmazonECRClient> {
 	
