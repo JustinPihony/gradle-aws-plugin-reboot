@@ -35,6 +35,10 @@ public class AWSLambdaPluginExtension extends BaseRegionAwarePluginExtension<AWS
 	@Getter
 	@Setter
 	private Integer requestTimeout = -1;
+
+	@Getter
+	@Setter
+	private Integer clientExecutionTimeout = -1;
 	
 	public AWSLambdaPluginExtension(Project project) {
 		super(project, AWSLambdaClient.class);
@@ -49,6 +53,10 @@ public class AWSLambdaPluginExtension extends BaseRegionAwarePluginExtension<AWS
 
 		if (requestTimeout > 0) {
 			clientConfiguration.setRequestTimeout(requestTimeout);
+		}
+
+		if (clientExecutionTimeout > 0) {
+			clientConfiguration.setClientExecutionTimeout(clientExecutionTimeout);
 		}
 
 		return clientConfiguration;
