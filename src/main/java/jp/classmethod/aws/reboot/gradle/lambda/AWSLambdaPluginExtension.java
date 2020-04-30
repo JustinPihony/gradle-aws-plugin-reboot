@@ -15,11 +15,12 @@
  */
 package jp.classmethod.aws.reboot.gradle.lambda;
 
-import com.amazonaws.ClientConfiguration;
 import lombok.Getter;
 import lombok.Setter;
+
 import org.gradle.api.Project;
 
+import com.amazonaws.ClientConfiguration;
 import com.amazonaws.services.lambda.AWSLambdaClient;
 
 import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
@@ -27,38 +28,39 @@ import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
 public class AWSLambdaPluginExtension extends BaseRegionAwarePluginExtension<AWSLambdaClient> {
 	
 	public static final String NAME = "lambda";
-
+	
 	@Getter
 	@Setter
 	private Integer maxErrorRetry = -1;
-
+	
 	@Getter
 	@Setter
 	private Integer requestTimeout = -1;
-
+	
 	@Getter
 	@Setter
 	private Integer clientExecutionTimeout = -1;
 	
+	
 	public AWSLambdaPluginExtension(Project project) {
 		super(project, AWSLambdaClient.class);
 	}
-
+	
 	@Override
 	protected ClientConfiguration buildClientConfiguration() {
 		ClientConfiguration clientConfiguration = new ClientConfiguration();
 		if (maxErrorRetry > 0) {
 			clientConfiguration.setMaxErrorRetry(maxErrorRetry);
 		}
-
+		
 		if (requestTimeout > 0) {
 			clientConfiguration.setRequestTimeout(requestTimeout);
 		}
-
+		
 		if (clientExecutionTimeout > 0) {
 			clientConfiguration.setClientExecutionTimeout(clientExecutionTimeout);
 		}
-
+		
 		return clientConfiguration;
 	}
 }
