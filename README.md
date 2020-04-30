@@ -1,6 +1,8 @@
 Gradle AWS Plugin
 =================
 
+[This is a reboot of](https://github.com/classmethod/gradle-aws-plugin) https://github.com/classmethod/gradle-aws-plugin
+
 [![Join the chat at https://gitter.im/gradle-aws-plugin/Lobby](https://badges.gitter.im/gradle-aws-plugin/Lobby.svg)](https://gitter.im/gradle-aws-plugin/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Gradle plugin to manage AWS resources.
