@@ -1,10 +1,10 @@
 apply plugin: 'groovy'
-apply plugin: 'jp.classmethod.aws.cloudformation'
+apply plugin: 'jp.classmethod.aws.reboot.cloudformation'
 
 apply from: 'deploy-dev.groovy'
 
-import jp.classmethod.aws.gradle.s3.SyncTask
-import jp.classmethod.aws.gradle.cloudformation.AmazonCloudFormationPluginExtension
+import jp.classmethod.aws.reboot.gradle.s3.SyncTask
+import jp.classmethod.aws.reboot.gradle.cloudformation.AmazonCloudFormationPluginExtension
 
 group 'example'
 version = "SNAPSHOT-${project.rootProject.startTime.format('yyMMddHHmm')}"

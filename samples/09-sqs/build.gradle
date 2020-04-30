@@ -1,7 +1,7 @@
 // -*- coding: utf-8; mode: groovy -*-
 
-import jp.classmethod.aws.gradle.sqs.AmazonSQSSendMessagesTask;
-import jp.classmethod.aws.gradle.sqs.AmazonSQSMessageConsumerTask;
+import jp.classmethod.aws.reboot.gradle.sqs.AmazonSQSSendMessagesTask;
+import jp.classmethod.aws.reboot.gradle.sqs.AmazonSQSMessageConsumerTask;
 
 import java.util.stream.Stream;
 
@@ -13,13 +13,13 @@ buildscript {
 
 	}
 	dependencies {
-		classpath "jp.classmethod.aws:gradle-aws-plugin:0.+"
+		classpath "jp.classmethod.aws.reboot:gradle-aws-plugin-reboot:0.+"
 	}
 }
 
-apply plugin: "jp.classmethod.aws.sqs"
+apply plugin: "jp.classmethod.aws.reboot.sqs"
 
-def myQueueName = 'gradle-aws-plugin-sample'
+def myQueueName = 'gradle-aws-plugin-reboot-sample'
 
 task sendMessages(type: AmazonSQSSendMessagesTask) {
 	queueName myQueueName

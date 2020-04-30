@@ -7,17 +7,17 @@ buildscript {
 		maven { url "https://plugins.gradle.org/m2/" }
 	}
 	dependencies {
-		classpath "com.diffplug.spotless:spotless-plugin-gradle:3.10.0"
+		classpath "com.diffplug.spotless:spotless-plugin-gradle:3.28.1"
 		classpath "de.thetaphi:forbiddenapis:2.5"
 		classpath "de.aaschmid:gradle-cpd-plugin:1.0"
 		classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.14"
 		classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2"
-		classpath "com.gradle.publish:plugin-publish-plugin:0.9.10"
+		classpath "com.gradle.publish:plugin-publish-plugin:0.11.0"
 	}
 }
 
-group = "jp.classmethod.aws"
-ext.artifactId = "gradle-aws-plugin"
+group = "jp.classmethod.aws.reboot"
+ext.artifactId = "gradle-aws-plugin-reboot"
 
 apply plugin: "java"
 apply plugin: "jacoco"
@@ -166,6 +166,7 @@ spotless {
 
 		indentWithTabs()
 		endWithNewline()
+		lineEndings 'UNIX'
 
 		replaceRegex 'Add space before comment asterisk', '^(\\t*)\\*', '$1 *'
 //		customReplaceRegex 'Remove indent before line comment', '^\\t*//', '//'

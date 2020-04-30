@@ -55,7 +55,7 @@ Implement the logic to publish your archive in that file, then run the command t
 
 See for example:
 
-[jp.classmethod.aws.gradle](deploy/jp.classmethod.aws.gradle) 
+[jp.classmethod.aws.reboot.gradle](deploy/jp.classmethod.aws.reboot.gradle)
 
 Or using maven-publish:
  

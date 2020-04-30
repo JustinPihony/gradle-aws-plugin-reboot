@@ -2,7 +2,7 @@
 
 import com.amazonaws.services.simplesystemsmanagement.model.Parameter;
 
-import jp.classmethod.aws.gradle.ssm.AmazonSSMPutParameterTask;
+import jp.classmethod.aws.reboot.gradle.ssm.AmazonSSMPutParameterTask;
 
 
 buildscript {
@@ -13,11 +13,11 @@ buildscript {
 
 	}
 	dependencies {
-		classpath "jp.classmethod.aws:gradle-aws-plugin:0.+"
+		classpath "jp.classmethod.aws.reboot:gradle-aws-plugin-reboot:0.+"
 	}
 }
 
-apply plugin: "jp.classmethod.aws.ssm"
+apply plugin: "jp.classmethod.aws.reboot.ssm"
 
 task putParameter(type: AmazonSSMPutParameterTask) {
 	prefix = "some.prefix."

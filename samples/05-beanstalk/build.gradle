@@ -7,17 +7,17 @@ buildscript {
 	}
 	dependencies {
 		classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE"
-		classpath "jp.classmethod.aws:gradle-aws-plugin:0.+"
+		classpath "jp.classmethod.aws.reboot:gradle-aws-plugin-reboot:0.+"
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'spring-boot'
-apply plugin: "jp.classmethod.aws.beanstalk"
+apply plugin: "jp.classmethod.aws.reboot.beanstalk"
 
 // ==== Project settings
 
-group = 'jp.classmethod.aws.gradle.sample'
+group = 'jp.classmethod.aws.reboot.gradle.sample'
 version = '0.1-SNAPSHOT'
 ext.artifactId = '05-beanstalk'
 
@@ -52,7 +52,7 @@ aws {
 
 beanstalk {
 	appName "05-beanstalk"
-	appDesc "gradle-aws-plugin demo application"
+	appDesc "gradle-aws-plugin-reboot demo application"
 
 	version {
 		label = "05-beanstalk-${versionDesc}"

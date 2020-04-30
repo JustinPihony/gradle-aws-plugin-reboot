@@ -8,18 +8,18 @@ buildscript {
 	}
 	dependencies {
 		classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE"
-		classpath "jp.classmethod.aws:gradle-aws-plugin:0.+"
+		classpath "jp.classmethod.aws.reboot:gradle-aws-plugin-reboot:0.+"
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'spring-boot'
-apply plugin: "jp.classmethod.aws.s3"
-apply plugin: "jp.classmethod.aws.cloudformation"
+apply plugin: "jp.classmethod.aws.reboot.s3"
+apply plugin: "jp.classmethod.aws.reboot.cloudformation"
 
 // ==== Project settings
 
-group = 'jp.classmethod.aws.gradle.sample'
+group = 'jp.classmethod.aws.reboot.gradle.sample'
 version = '0.1-SNAPSHOT'
 ext.artifactId = '06-cloudformation'
 

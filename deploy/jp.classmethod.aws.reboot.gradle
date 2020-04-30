@@ -1,0 +1,86 @@
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+publishing {
+	publications {
+		mavenStuff(MavenPublication) {
+			from components.java
+
+			artifact sourcesJar {
+				classifier "sources"
+			}
+
+			artifact javadocJar {
+				classifier "javadoc"
+			}
+		}
+	}
+}
+
+pluginBundle {
+	website = 'https://github.com/justinPihony/gradle-aws-plugin-reboot'
+	vcsUrl = 'https://github.com/justinPihony/gradle-aws-plugin-reboot'
+	description = 'Gradle plugin to manage Amazon Web Services'
+	tags = ['AWS']
+
+	plugins {
+		awsPlugin {
+			id = 'jp.classmethod.aws.reboot'
+			displayName = 'Gradle AWS plugin'
+		}
+		awsBeanstalkPlugin {
+			id = 'jp.classmethod.aws.reboot.beanstalk'
+			displayName = 'Gradle AWS Elastic Beanstalk plugin'
+		}
+		awsCloudFormationPlugin {
+			id = 'jp.classmethod.aws.reboot.cloudformation'
+			displayName = 'Gradle AWS CloudFormation plugin'
+		}
+		awsCloudWatchPlugin {
+			id = 'jp.classmethod.aws.reboot.cloudwatch'
+			displayName = 'Gradle Amazon CloudWatch plugin'
+		}
+		awsECRPlugin {
+			id = 'jp.classmethod.aws.reboot.ecr'
+			displayName = 'Gradle Amazon ECR plugin'
+		}
+		awsEC2Plugin {
+			id = 'jp.classmethod.aws.reboot.ec2'
+			displayName = 'Gradle Amazon EC2 plugin'
+		}
+		awsELBPlugin {
+			id = 'jp.classmethod.aws.reboot.elb'
+			displayName = 'Gradle Amazon Elastic Load Balancing plugin'
+		}
+		awsIAMPlugin {
+			id = 'jp.classmethod.aws.reboot.iam'
+			displayName = 'Gradle AWS Identity and Access Management plugin'
+		}
+		awsLambdaPlugin {
+			id = 'jp.classmethod.aws.reboot.lambda'
+			displayName = 'Gradle AWS Lambda plugin'
+		}
+		awsRDSPlugin {
+			id = 'jp.classmethod.aws.reboot.rds'
+			displayName = 'Gradle Amazon RDS plugin'
+		}
+		awsRoute53Plugin {
+			id = 'jp.classmethod.aws.reboot.route53'
+			displayName = 'Gradle Amazon Route53 plugin'
+		}
+		awsS3Plugin {
+			id = 'jp.classmethod.aws.reboot.s3'
+			displayName = 'Gradle Amazon S3 plugin'
+		}
+		awsSSMPlugin {
+			id = 'jp.classmethod.aws.reboot.ssm'
+			displayName = 'Gradle Amazon SSM plugin'
+		}
+	}
+	mavenCoordinates {
+		groupId = project.group
+		artifactId = project.artifactId
+		version = project.version
+	}
+}
