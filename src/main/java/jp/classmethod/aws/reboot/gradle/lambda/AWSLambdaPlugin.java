@@ -24,6 +24,7 @@ public class AWSLambdaPlugin implements Plugin<Project> {
 	
 	public void apply(Project project) {
 		project.getPluginManager().apply(AwsPlugin.class);
+		System.out.print('c');
 		project.getExtensions().create(AWSLambdaPluginExtension.NAME, AWSLambdaPluginExtension.class, project);
 	}
 }
