@@ -222,6 +222,7 @@ public class AmazonCloudFormationMigrateStackTask extends ConventionTask {
 		File cfnTemplateFile = getCfnTemplateFile();
 		List<Parameter> cfnStackParams = getCfnStackParams();
 		List<Tag> cfnStackTags = getCfnStackTags();
+		String cfnRoleArn = getCfnRoleArn();
 		String cfnStackPolicyUrl = getCfnStackPolicyUrl();
 		File cfnStackPolicyFile = getCfnStackPolicyFile();
 		String cfnOnFailure = getCfnOnFailure();
@@ -240,7 +241,8 @@ public class AmazonCloudFormationMigrateStackTask extends ConventionTask {
 			.withStackName(stackName)
 			.withParameters(cfnStackParams)
 			.withTags(cfnStackTags)
-			.withOnFailure(cfnOnFailure);
+			.withOnFailure(cfnOnFailure)
+			.withRoleARN(cfnRoleArn);
 		
 		// If template URL is specified, then use it
 		if (Strings.isNullOrEmpty(cfnTemplateUrl) == false) {
