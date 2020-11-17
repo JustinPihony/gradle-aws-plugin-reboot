@@ -37,7 +37,7 @@ public class AmazonS3FileUploadTask extends AbstractAmazonS3FileUploadTask {
 	}
 	
 	@TaskAction
-	public void upload() throws IOException {
+	public void upload() throws IOException { // NOPMD
 		// to enable conventionMappings feature
 		String bucketName = getBucketName();
 		String key = getKey();

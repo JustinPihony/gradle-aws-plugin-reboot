@@ -80,7 +80,7 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 	
 	@Getter
 	@Setter
-	private Integer timeout;
+	private Integer awsRequestTimeout;
 	
 	@Getter
 	@Setter
@@ -124,7 +124,7 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 	}
 	
 	@TaskAction
-	public void createOrUpdateFunction() throws FileNotFoundException, IOException {
+	public void createOrUpdateFunction() throws FileNotFoundException, IOException { // NOPMD
 		// to enable conventionMappings feature
 		String functionName = getFunctionName();
 		File zipFile = getZipFile();
@@ -188,7 +188,7 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 			.withRole(getRole())
 			.withHandler(getHandler())
 			.withDescription(getFunctionDescription())
-			.withTimeout(getTimeout())
+			.withTimeout(getAwsRequestTimeout())
 			.withMemorySize(getMemorySize())
 			.withPublish(getPublish())
 			.withVpcConfig(getVpcConfig())
@@ -263,7 +263,7 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 			updateDescription = config.getDescription();
 		}
 		
-		Integer updateTimeout = getTimeout();
+		Integer updateTimeout = getAwsRequestTimeout();
 		if (updateTimeout == null) {
 			updateTimeout = config.getTimeout();
 		}

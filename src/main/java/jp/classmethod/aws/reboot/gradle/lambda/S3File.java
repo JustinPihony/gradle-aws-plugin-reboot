@@ -20,6 +20,8 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 
+import com.google.common.base.Strings;
+
 public class S3File {
 	
 	@Getter
@@ -46,9 +48,7 @@ public class S3File {
 	 * Validates that both bucketName and key are provided.
 	 */
 	public void validate() {
-		boolean missingBucketName = bucketName == null || bucketName.trim().isEmpty();
-		boolean missingKey = key == null || key.trim().isEmpty();
-		if (missingBucketName || missingKey) {
+		if (Strings.isNullOrEmpty(bucketName) || Strings.isNullOrEmpty(key)) {
 			throw new GradleException("bucketName and key are required for an S3File");
 		}
 	}

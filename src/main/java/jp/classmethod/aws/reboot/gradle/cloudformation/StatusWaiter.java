@@ -74,7 +74,7 @@ public abstract class StatusWaiter {
 		this.loopWait = loopWait;
 	}
 	
-	public void waitForSuccessStatus() throws InterruptedException {
+	public void waitForSuccessStatus() throws InterruptedException { // NOPMD
 		long start = System.currentTimeMillis();
 		boolean found = false;
 		GetStatusResult lastStatus;

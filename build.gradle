@@ -16,27 +16,27 @@ buildscript {
 	}
 }
 
+plugins {
+	id 'java'
+	id "com.gradle.plugin-publish" version "0.12.0"
+
+	// ======== code quality ========
+	id "checkstyle"
+	id "pmd"
+	id "jacoco"
+	id "de.thetaphi.forbiddenapis" version "3.1"
+	id "com.diffplug.gradle.spotless" version "4.5.1"
+	id "com.github.spotbugs" version "4.6.0"
+}
+
 group = "jp.classmethod.aws.reboot"
 ext.artifactId = "gradle-aws-plugin-reboot"
-
-apply plugin: "java"
-apply plugin: "jacoco"
-apply plugin: "com.gradle.plugin-publish"
 
 // gradle configuration
 apply from: 'gradle/version.gradle'
 apply from: 'gradle/resolveDependencies.gradle'
 
 defaultTasks "clean", "build"
-
-// ======== code quality ========
-apply plugin: "checkstyle"
-apply plugin: "findbugs"
-apply plugin: "pmd"
-apply plugin: "cpd"
-apply plugin: "jacoco"
-apply plugin: "de.thetaphi.forbiddenapis"
-apply plugin: "com.diffplug.gradle.spotless"
 
 // compiler
 sourceCompatibility = 1.8
@@ -93,23 +93,25 @@ task verifyNoCheckstyleWarningsInTest {
 checkstyleTest.finalizedBy verifyNoCheckstyleWarningsInTest
 
 // findbugs
-findbugs {
-	toolVersion = "3.0.1"
+spotbugs {
 	effort = "max"
 	includeFilter = file("config/findbugs/includeFilter.xml")
 	excludeFilter = file("config/findbugs/excludeFilter.xml")
 }
-tasks.withType(FindBugs) {
+spotbugsMain {
 	reports {
-		xml.enabled = false
-		html.enabled = true
+		html {
+			enabled = true
+		}
+		xml {
+			enabled = true
+		}
 	}
 }
 
 // pmd
 pmd {
 	consoleOutput = true
-	toolVersion = '5.5.2'
 }
 pmdMain {
 	ruleSetFiles = files("config/pmd/pmd-settings.xml")
@@ -118,14 +120,6 @@ pmdMain {
 pmdTest {
 	ruleSetFiles = files("config/pmd/pmd-settings-test.xml")
 	ruleSets = []  // To apply only the custom rules
-}
-cpdCheck {
-	reports {
-		text.enabled = true
-		xml.enabled = false
-	}
-	source = sourceSets.main.allJava // only main source
-	ignoreFailures = true
 }
 
 // forbiddenapis
@@ -209,6 +203,7 @@ dependencies {
 	compile "com.google.guava:guava:$guavaVersion"
 	compile "commons-io:commons-io:1.4"
 	compileOnly "org.projectlombok:lombok:$lombokVersion"
+	annotationProcessor  "org.projectlombok:lombok:$lombokVersion"
 
 	compile "com.amazonaws:aws-java-sdk-sts:$awsJavaSdkVersion"
 	compile "com.amazonaws:aws-java-sdk-s3:$awsJavaSdkVersion"
@@ -238,8 +233,3 @@ dependencies {
 // Allows forks of the plugin to define their own deployment mechanisms
 // in separate files named according to their maven group name
 apply from: "deploy/${group}.gradle"
-
-// ======== wrapper ========
-task wrapper(type: Wrapper) {
-	gradleVersion = "4.6"
-}

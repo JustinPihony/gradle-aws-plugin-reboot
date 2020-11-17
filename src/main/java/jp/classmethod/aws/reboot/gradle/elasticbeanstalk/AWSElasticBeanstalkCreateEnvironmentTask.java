@@ -33,6 +33,7 @@ import com.amazonaws.services.elasticbeanstalk.model.DescribeEnvironmentsRequest
 import com.amazonaws.services.elasticbeanstalk.model.DescribeEnvironmentsResult;
 import com.amazonaws.services.elasticbeanstalk.model.Tag;
 import com.amazonaws.services.elasticbeanstalk.model.UpdateEnvironmentRequest;
+import com.google.common.base.Strings;
 
 public class AWSElasticBeanstalkCreateEnvironmentTask extends ConventionTask { // NOPMD
 	
@@ -135,13 +136,13 @@ public class AWSElasticBeanstalkCreateEnvironmentTask extends ConventionTask { /
 				.withVersionLabel(versionLabel);
 			
 			// All other variables are optional and refer to the environment
-			if (isNotBlank(envName)) {
+			if (!Strings.isNullOrEmpty(envName)) {
 				req.withEnvironmentName(envName);
 			}
-			if (isNotBlank(envDesc)) {
+			if (!Strings.isNullOrEmpty(envDesc)) {
 				req.withDescription(envDesc);
 			}
-			if (isNotBlank(templateName)) {
+			if (!Strings.isNullOrEmpty(templateName)) {
 				req.withTemplateName(templateName);
 			}
 			
@@ -149,10 +150,5 @@ public class AWSElasticBeanstalkCreateEnvironmentTask extends ConventionTask { /
 			
 			getLogger().info("environment {} @ {} ({}) updated", envName, appName, environmentId);
 		}
-	}
-	
-	// simple helper method to not include apache commons lang's StringUtils only for this
-	private boolean isNotBlank(String str) {
-		return str != null && !str.trim().isEmpty();
 	}
 }

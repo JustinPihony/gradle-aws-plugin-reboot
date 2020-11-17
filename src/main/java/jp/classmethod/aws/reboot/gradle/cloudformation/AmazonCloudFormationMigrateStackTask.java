@@ -102,7 +102,7 @@ public class AmazonCloudFormationMigrateStackTask extends ConventionTask {
 	}
 	
 	@TaskAction
-	public void createOrUpdateStack() throws InterruptedException, IOException {
+	public void createOrUpdateStack() throws InterruptedException, IOException { // NOPMD
 		// to enable conventionMappings feature
 		String stackName = getStackName();
 		String cfnTemplateUrl = getCfnTemplateUrl();
