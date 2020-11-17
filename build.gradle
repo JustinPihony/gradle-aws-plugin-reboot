@@ -7,12 +7,7 @@ buildscript {
 		maven { url "https://plugins.gradle.org/m2/" }
 	}
 	dependencies {
-		classpath "com.diffplug.spotless:spotless-plugin-gradle:3.28.1"
-		classpath "de.thetaphi:forbiddenapis:2.5"
-		classpath "de.aaschmid:gradle-cpd-plugin:1.0"
-		classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.14"
 		classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2"
-		classpath "com.gradle.publish:plugin-publish-plugin:0.11.0"
 	}
 }
 
@@ -21,6 +16,7 @@ plugins {
 	id "com.gradle.plugin-publish" version "0.12.0"
 
 	// ======== code quality ========
+	id 'de.aaschmid.cpd' version '3.1'
 	id "checkstyle"
 	id "pmd"
 	id "jacoco"
@@ -120,6 +116,15 @@ pmdMain {
 pmdTest {
 	ruleSetFiles = files("config/pmd/pmd-settings-test.xml")
 	ruleSets = []  // To apply only the custom rules
+}
+
+cpdCheck {
+	reports {
+		text.enabled = true
+		xml.enabled = false
+	}
+	source = sourceSets.main.allJava // only main source
+	ignoreFailures = true
 }
 
 // forbiddenapis
