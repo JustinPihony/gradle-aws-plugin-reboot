@@ -86,12 +86,12 @@ public abstract class StatusWaiter {
 			}
 			try {
 				lastStatus = getStatus();
-				
-				found = true;
-				
+
 				// Get stack events info
 				List<StackEvent> stackEvents = getStackEvents(stackName);
-				
+
+				found = true;
+
 				// Always output new events; might be the last time you can
 				printEvents(stackEvents, printedEvents);
 				
