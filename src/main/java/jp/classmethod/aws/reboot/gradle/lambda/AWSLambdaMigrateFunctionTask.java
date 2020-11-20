@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import lombok.Getter;
@@ -105,6 +107,10 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 	@Getter
 	@Setter
 	private Map<String, String> tags;
+
+	@Getter
+	@Setter
+	private List<String> layers;
 	
 	@Getter
 	@Setter
@@ -194,6 +200,7 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 			.withVpcConfig(getVpcConfig())
 			.withEnvironment(new Environment().withVariables(getEnvironment()))
 			.withTags(getTags())
+			.withLayers(getLayers())
 			.withCode(functionCode);
 		createFunctionResult = lambda.createFunction(request);
 		getLogger().info("Create Lambda function requested: {}", createFunctionResult.getFunctionArn());
@@ -272,6 +279,14 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 		if (updateMemorySize == null) {
 			updateMemorySize = config.getMemorySize();
 		}
+
+		Map<String, String> environmentVariables = new HashMap<>();
+		if (config.getEnvironment() != null) {
+			environmentVariables.putAll(config.getEnvironment().getVariables());
+		}
+		if (getEnvironment() != null) {
+			environmentVariables.putAll(getEnvironment());
+		}
 		
 		UpdateFunctionConfigurationRequest request = new UpdateFunctionConfigurationRequest()
 			.withFunctionName(updateFunctionName)
@@ -281,7 +296,8 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 			.withDescription(updateDescription)
 			.withTimeout(updateTimeout)
 			.withVpcConfig(getVpcConfig())
-			.withEnvironment(new Environment().withVariables(getEnvironment()))
+			.withEnvironment(new Environment().withVariables(environmentVariables))
+			.withLayers(getLayers())
 			.withMemorySize(updateMemorySize);
 		
 		UpdateFunctionConfigurationResult updateFunctionConfiguration = lambda.updateFunctionConfiguration(request);
