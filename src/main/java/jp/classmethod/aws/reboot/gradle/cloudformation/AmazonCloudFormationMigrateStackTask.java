@@ -136,7 +136,8 @@ public class AmazonCloudFormationMigrateStackTask extends ConventionTask {
 		}
 	}
 
-	private void handleAmazonServiceException(String stackName, String cfnTemplateUrl, File cfnTemplateFile, AmazonCloudFormation cfn, AmazonServiceException e) throws IOException {
+	private void handleAmazonServiceException(String stackName, String cfnTemplateUrl, File cfnTemplateFile,
+											  AmazonCloudFormation cfn, AmazonServiceException e) throws IOException {
 		if (e.getMessage().contains("does not exist")) {
 			getLogger().warn("stack {} not found", stackName);
 			if (cfnTemplateUrl == null && cfnTemplateFile == null) {

@@ -55,7 +55,9 @@ public class S3File {
 	}
 
 	private boolean isNullOrBlank(String str) {
-		if(str == null) {return true;}
+		if (str == null) {
+			return true;
+		}
 		String trimmedStr = str.trim();
 		return trimmedStr.length() == 0;
 	}

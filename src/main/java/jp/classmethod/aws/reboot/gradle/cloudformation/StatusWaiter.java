@@ -64,7 +64,6 @@ public abstract class StatusWaiter {
 	
 	private final int loopWait;
 	
-	
 	protected StatusWaiter(AmazonCloudFormation cfn, String stackName, Logger logger, int loopTimeout,
 			int loopWait) {
 		this.cfn = cfn;
@@ -95,7 +94,9 @@ public abstract class StatusWaiter {
 				// Always output new events; might be the last time you can
 				printEvents(stackEvents, printedEvents);
 
-				if (checkForSuccess(lastStatus)) {break;}
+				if (checkForSuccess(lastStatus)) {
+					break;
+				}
 			} catch (AmazonServiceException e) {
 				if (found) {
 					break;

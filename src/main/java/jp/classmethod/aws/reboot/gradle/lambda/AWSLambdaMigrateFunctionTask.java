@@ -294,7 +294,9 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 
 	private <T> T getOrElse(Supplier<T> primary, Supplier<T> secondary) {
 		T primaryValue = primary.get();
-		if(primaryValue == null) {return secondary.get();}
+		if (primaryValue == null) {
+			return secondary.get();
+		}
 		return primaryValue;
 	}
 
