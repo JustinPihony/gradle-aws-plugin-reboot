@@ -1,25 +1,26 @@
 // -*- coding: utf-8; mode: groovy -*-
-
 buildscript {
 	repositories {
 		mavenCentral()
-		jcenter()
 		maven { url "https://plugins.gradle.org/m2/" }
 	}
 	dependencies {
-		classpath "com.diffplug.spotless:spotless-plugin-gradle:3.28.1"
 		classpath "de.thetaphi:forbiddenapis:2.5"
-		classpath "de.aaschmid:gradle-cpd-plugin:1.0"
 		classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.14"
-		classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2"
 		classpath "com.gradle.publish:plugin-publish-plugin:0.11.0"
 	}
+}
+
+plugins {
+	id 'java'
+	id "com.github.spotbugs" version "4.7.2"
+	id 'de.aaschmid.cpd' version '3.2'
+	id "com.diffplug.spotless" version "5.14.1"
 }
 
 group = "jp.classmethod.aws.reboot"
 ext.artifactId = "gradle-aws-plugin-reboot"
 
-apply plugin: "java"
 apply plugin: "jacoco"
 apply plugin: "com.gradle.plugin-publish"
 
@@ -31,12 +32,10 @@ defaultTasks "clean", "build"
 
 // ======== code quality ========
 apply plugin: "checkstyle"
-apply plugin: "findbugs"
+apply plugin: "com.github.spotbugs"
 apply plugin: "pmd"
-apply plugin: "cpd"
 apply plugin: "jacoco"
 apply plugin: "de.thetaphi.forbiddenapis"
-apply plugin: "com.diffplug.gradle.spotless"
 
 // compiler
 sourceCompatibility = 1.8
@@ -53,8 +52,8 @@ options.compilerArgs << "-Werror"
 // jacoco
 jacocoTestReport {
 	reports {
-		xml.enabled false
-		csv.enabled false
+		xml.required = false
+		csv.required = false
 	}
 }
 
@@ -92,14 +91,14 @@ task verifyNoCheckstyleWarningsInTest {
 }
 checkstyleTest.finalizedBy verifyNoCheckstyleWarningsInTest
 
-// findbugs
-findbugs {
+// spotbugs
+spotbugs {
 	toolVersion = "3.0.1"
 	effort = "max"
-	includeFilter = file("config/findbugs/includeFilter.xml")
-	excludeFilter = file("config/findbugs/excludeFilter.xml")
+	includeFilter = file("config/spotbugs/includeFilter.xml")
+	excludeFilter = file("config/spotbugs/excludeFilter.xml")
 }
-tasks.withType(FindBugs) {
+spotbugsMain  {
 	reports {
 		xml.enabled = false
 		html.enabled = true
@@ -121,8 +120,8 @@ pmdTest {
 }
 cpdCheck {
 	reports {
-		text.enabled = true
-		xml.enabled = false
+		text.required = true
+		xml.required = false
 	}
 	source = sourceSets.main.allJava // only main source
 	ignoreFailures = true
@@ -200,36 +199,36 @@ configurations {
 
 // ======== libraries ========
 repositories {
-	jcenter()
 	mavenCentral()
 }
 
 dependencies {
-	compile gradleApi()
-	compile "com.google.guava:guava:$guavaVersion"
-	compile "commons-io:commons-io:1.4"
+	implementation gradleApi()
+	implementation "com.google.guava:guava:$guavaVersion"
+	implementation "commons-io:commons-io:1.4"
 	compileOnly "org.projectlombok:lombok:$lombokVersion"
+	annotationProcessor "org.projectlombok:lombok:$lombokVersion"
 
-	compile "com.amazonaws:aws-java-sdk-sts:$awsJavaSdkVersion"
-	compile "com.amazonaws:aws-java-sdk-s3:$awsJavaSdkVersion"
-	compile "com.amazonaws:aws-java-sdk-ec2:$awsJavaSdkVersion"
-	compile "com.amazonaws:aws-java-sdk-rds:$awsJavaSdkVersion"
-	compile "com.amazonaws:aws-java-sdk-route53:$awsJavaSdkVersion"
-	compile "com.amazonaws:aws-java-sdk-elasticloadbalancing:$awsJavaSdkVersion"
-	compile "com.amazonaws:aws-java-sdk-elasticbeanstalk:$awsJavaSdkVersion"
-	compile "com.amazonaws:aws-java-sdk-cloudformation:$awsJavaSdkVersion"
-	compile "com.amazonaws:aws-java-sdk-lambda:$awsJavaSdkVersion"
-	compile "com.amazonaws:aws-java-sdk-iam:$awsJavaSdkVersion"
-	compile "com.amazonaws:aws-java-sdk-sqs:$awsJavaSdkVersion"
-	compile "com.amazonaws:aws-java-sdk-sns:$awsJavaSdkVersion"
-	compile "com.amazonaws:aws-java-sdk-ecr:$awsJavaSdkVersion"
-	compile "com.amazonaws:aws-java-sdk-ssm:$awsJavaSdkVersion"
-	compile "com.amazonaws:aws-java-sdk-cloudwatch:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-sts:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-s3:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-ec2:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-rds:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-route53:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-elasticloadbalancing:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-elasticbeanstalk:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-cloudformation:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-lambda:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-iam:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-sqs:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-sns:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-ecr:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-ssm:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-cloudwatch:$awsJavaSdkVersion"
 
 	// tests
-	testCompile "junit:junit:$junitVersion"
-	testCompile "org.hamcrest:hamcrest-library:$hamcrestVersion"
-	testCompile "org.mockito:mockito-core:$mockitoCoreVersion"
+	testImplementation "junit:junit:$junitVersion"
+	testImplementation "org.hamcrest:hamcrest-library:$hamcrestVersion"
+	testImplementation "org.mockito:mockito-core:$mockitoCoreVersion"
 
 	deployerJars "org.springframework.build:aws-maven:4.7.0.RELEASE"
 }
@@ -240,6 +239,6 @@ dependencies {
 apply from: "deploy/${group}.gradle"
 
 // ======== wrapper ========
-task wrapper(type: Wrapper) {
-	gradleVersion = "4.6"
+wrapper {
+	gradleVersion = "7.1.1"
 }

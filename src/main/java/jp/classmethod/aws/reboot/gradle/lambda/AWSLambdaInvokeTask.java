@@ -26,6 +26,7 @@ import lombok.Setter;
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
 import org.gradle.api.tasks.TaskAction;
+import org.gradle.api.tasks.Input;
 
 import com.amazonaws.services.lambda.AWSLambda;
 import com.amazonaws.services.lambda.model.InvocationType;
@@ -38,32 +39,32 @@ import com.google.common.io.Files;
 import groovy.lang.Closure;
 
 public class AWSLambdaInvokeTask extends ConventionTask {
-	
-	@Getter
+
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String functionName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private InvocationType invocationType;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private LogType logType = LogType.None;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String clientContext;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String qualifier;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Object payload;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private InvokeResult invokeResult;
 	
 	

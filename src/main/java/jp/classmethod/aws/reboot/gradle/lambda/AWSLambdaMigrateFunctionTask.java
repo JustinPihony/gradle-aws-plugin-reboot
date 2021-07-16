@@ -80,7 +80,7 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 	
 	@Getter
 	@Setter
-	private Integer timeout;
+	private Integer lambdaTimeout;
 	
 	@Getter
 	@Setter
@@ -188,7 +188,7 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 			.withRole(getRole())
 			.withHandler(getHandler())
 			.withDescription(getFunctionDescription())
-			.withTimeout(getTimeout())
+			.withTimeout(getLambdaTimeout())
 			.withMemorySize(getMemorySize())
 			.withPublish(getPublish())
 			.withVpcConfig(getVpcConfig())
@@ -263,7 +263,7 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 			updateDescription = config.getDescription();
 		}
 		
-		Integer updateTimeout = getTimeout();
+		Integer updateTimeout = getLambdaTimeout();
 		if (updateTimeout == null) {
 			updateTimeout = config.getTimeout();
 		}

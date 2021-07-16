@@ -62,7 +62,7 @@ public class AWSLambdaCreateFunctionTask extends ConventionTask {
 	
 	@Getter
 	@Setter
-	private Integer timeout;
+	private Integer lambdaTimeout;
 	
 	@Getter
 	@Setter
@@ -142,7 +142,7 @@ public class AWSLambdaCreateFunctionTask extends ConventionTask {
 			.withRole(getRole())
 			.withHandler(getHandler())
 			.withDescription(getFunctionDescription())
-			.withTimeout(getTimeout())
+			.withTimeout(getLambdaTimeout())
 			.withMemorySize(getMemorySize())
 			.withPublish(getPublish())
 			.withVpcConfig(getVpcConfig())

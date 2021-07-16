@@ -18,7 +18,7 @@ package jp.classmethod.aws.reboot.gradle.common;
 import lombok.Getter;
 import lombok.Setter;
 
-import org.gradle.api.Nullable;
+import javax.annotation.Nullable;
 import org.gradle.api.Project;
 
 import com.amazonaws.AmazonWebServiceClient;
