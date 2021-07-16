@@ -320,6 +320,9 @@ task migrateFunction(type: AWSLambdaMigrateFunctionTask, dependsOn: zip) {
 	    p1: "Value",
 	    p2: "Value2"    
 	]
+    layers = [
+            "arn:aws:lambda:${aws.region}:${aws.accountId}:layer:my-layer:3"
+    ]
 }
 
 task invokeFunction(type: AWSLambdaInvokeTask) {
