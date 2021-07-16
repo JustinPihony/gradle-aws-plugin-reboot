@@ -93,7 +93,7 @@ checkstyleTest.finalizedBy verifyNoCheckstyleWarningsInTest
 
 // spotbugs
 spotbugs {
-	toolVersion = "3.0.1"
+	toolVersion = "4.7.2"
 	effort = "max"
 	includeFilter = file("config/spotbugs/includeFilter.xml")
 	excludeFilter = file("config/spotbugs/excludeFilter.xml")
