@@ -13,6 +13,7 @@ buildscript {
 
 plugins {
 	id 'java'
+	id 'pmd'
 	id "com.github.spotbugs" version "4.7.2"
 	id 'de.aaschmid.cpd' version '3.2'
 	id "com.diffplug.spotless" version "5.14.1"
@@ -33,7 +34,6 @@ defaultTasks "clean", "build"
 // ======== code quality ========
 apply plugin: "checkstyle"
 apply plugin: "com.github.spotbugs"
-apply plugin: "pmd"
 apply plugin: "jacoco"
 apply plugin: "de.thetaphi.forbiddenapis"
 
@@ -108,7 +108,7 @@ spotbugsMain  {
 // pmd
 pmd {
 	consoleOutput = true
-	toolVersion = '5.5.2'
+	toolVersion = '6.21.0'
 }
 pmdMain {
 	ruleSetFiles = files("config/pmd/pmd-settings.xml")

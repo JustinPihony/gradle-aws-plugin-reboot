@@ -132,21 +132,25 @@ public class AmazonCloudFormationMigrateStackTask extends ConventionTask {
 				throw new GradleException("invalid status for update: " + stack.getStackStatus());
 			}
 		} catch (AmazonServiceException e) {
-			if (e.getMessage().contains("does not exist")) {
-				getLogger().warn("stack {} not found", stackName);
-				if (cfnTemplateUrl == null && cfnTemplateFile == null) {
-					getLogger().error("cfnTemplateUrl or cfnTemplateFile must be provided");
-					throw e;
-				}
-				createStack(cfn);
-			} else if (e.getMessage().contains("No updates are to be performed.")) {
-				getLogger().trace(e.getMessage());
-			} else {
-				throw e;
-			}
+			handleAmazonServiceException(stackName, cfnTemplateUrl, cfnTemplateFile, cfn, e);
 		}
 	}
-	
+
+	private void handleAmazonServiceException(String stackName, String cfnTemplateUrl, File cfnTemplateFile, AmazonCloudFormation cfn, AmazonServiceException e) throws IOException {
+		if (e.getMessage().contains("does not exist")) {
+			getLogger().warn("stack {} not found", stackName);
+			if (cfnTemplateUrl == null && cfnTemplateFile == null) {
+				getLogger().error("cfnTemplateUrl or cfnTemplateFile must be provided");
+				throw e;
+			}
+			createStack(cfn);
+		} else if (e.getMessage().contains("No updates are to be performed.")) {
+			getLogger().trace(e.getMessage());
+		} else {
+			throw e;
+		}
+	}
+
 	private void updateStack(AmazonCloudFormation cfn) throws IOException {
 		// to enable conventionMappings feature
 		String stackName = getStackName();

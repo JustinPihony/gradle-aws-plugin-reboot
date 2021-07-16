@@ -94,20 +94,8 @@ public abstract class StatusWaiter {
 
 				// Always output new events; might be the last time you can
 				printEvents(stackEvents, printedEvents);
-				
-				// If completed successfully, output status then break out of while loop
-				if (lastStatus == GetStatusResult.SUCCESS) {
-					logger.info("Status of {} is now {}.", describeSubject(), lastStatus);
-					break;
-					
-					// Else if still going, sleep some then loop again
-				} else if (lastStatus == GetStatusResult.WAITING) {
-					logger.info("Status of {} is {}...", describeSubject(), lastStatus);
-					Thread.sleep(loopWait * 1000);
-				} else {
-					throw new GradleException(
-							"Status of " + describeSubject() + " is " + lastStatus + ".  It seems to be failed.");
-				}
+
+				if (checkForSuccess(lastStatus)) {break;}
 			} catch (AmazonServiceException e) {
 				if (found) {
 					break;
@@ -118,7 +106,24 @@ public abstract class StatusWaiter {
 			}
 		}
 	}
-	
+
+	private boolean checkForSuccess(GetStatusResult lastStatus) throws InterruptedException {
+		// If completed successfully, output status then break out of while loop
+		if (lastStatus == GetStatusResult.SUCCESS) {
+			logger.info("Status of {} is now {}.", describeSubject(), lastStatus);
+			return true;
+
+			// Else if still going, sleep some then loop again
+		} else if (lastStatus == GetStatusResult.WAITING) {
+			logger.info("Status of {} is {}...", describeSubject(), lastStatus);
+			Thread.sleep(loopWait * 1000);
+		} else {
+			throw new GradleException(
+					"Status of " + describeSubject() + " is " + lastStatus + ".  It seems to be failed.");
+		}
+		return false;
+	}
+
 	private List<StackEvent> getStackEvents(String stackName) {
 		DescribeStackEventsRequest request = new DescribeStackEventsRequest().withStackName(stackName);
 		DescribeStackEventsResult result = cfn.describeStackEvents(request);

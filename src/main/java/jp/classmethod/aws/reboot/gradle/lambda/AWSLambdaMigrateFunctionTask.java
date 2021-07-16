@@ -24,6 +24,7 @@ import java.nio.channels.FileChannel;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -136,18 +137,9 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 		String functionName = getFunctionName();
 		File zipFile = getZipFile();
 		S3File s3File = getS3File();
-		
-		if (functionName == null) {
-			throw new GradleException("functionName is required");
-		}
-		
-		if ((zipFile == null && s3File == null) || (zipFile != null && s3File != null)) {
-			throw new GradleException("exactly one of zipFile or s3File is required");
-		}
-		if (s3File != null) {
-			s3File.validate();
-		}
-		
+
+		validateCreateOrUpdateFunctionVariables(functionName, zipFile, s3File);
+
 		AWSLambdaPluginExtension ext = getProject().getExtensions().getByType(AWSLambdaPluginExtension.class);
 		AWSLambda lambda = ext.getClient();
 		
@@ -168,7 +160,20 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 			createFunction(lambda);
 		}
 	}
-	
+
+	private void validateCreateOrUpdateFunctionVariables(String functionName, File zipFile, S3File s3File) {
+		if (functionName == null) {
+			throw new GradleException("functionName is required");
+		}
+
+		if ((zipFile == null && s3File == null) || (zipFile != null && s3File != null)) {
+			throw new GradleException("exactly one of zipFile or s3File is required");
+		}
+		if (s3File != null) {
+			s3File.validate();
+		}
+	}
+
 	private void createFunction(AWSLambda lambda) throws IOException {
 		// to enable conventionMappings feature
 		File zipFile = getZipFile();
@@ -246,40 +251,19 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 	}
 	
 	private void updateFunctionConfiguration(AWSLambda lambda, FunctionConfiguration config) {
-		String updateFunctionName = getFunctionName();
-		if (updateFunctionName == null) {
-			updateFunctionName = config.getFunctionName();
-		}
-		
-		String updateRole = getRole();
-		if (updateRole == null) {
-			updateRole = config.getRole();
-		}
-		
-		Runtime updateRuntime = getRuntime();
-		if (updateRuntime == null) {
-			updateRuntime = Runtime.fromValue(config.getRuntime());
-		}
-		
-		String updateHandler = getHandler();
-		if (updateHandler == null) {
-			updateHandler = config.getHandler();
-		}
-		
-		String updateDescription = getFunctionDescription();
-		if (updateDescription == null) {
-			updateDescription = config.getDescription();
-		}
-		
-		Integer updateTimeout = getLambdaTimeout();
-		if (updateTimeout == null) {
-			updateTimeout = config.getTimeout();
-		}
-		
-		Integer updateMemorySize = getMemorySize();
-		if (updateMemorySize == null) {
-			updateMemorySize = config.getMemorySize();
-		}
+		String updateFunctionName = getOrElse(() -> getFunctionName(), () -> config.getFunctionName());
+
+		String updateRole = getOrElse(() -> getRole(), () -> config.getRole());
+
+		Runtime updateRuntime = getOrElse(() -> getRuntime(), () -> Runtime.fromValue(config.getRuntime()));
+
+		String updateHandler = getOrElse(() -> getHandler(), () -> config.getHandler());
+
+		String updateDescription = getOrElse(() -> getFunctionDescription(), () -> config.getDescription());
+
+		Integer updateTimeout = getOrElse(() -> getLambdaTimeout(), () -> config.getTimeout());
+
+		Integer updateMemorySize = getOrElse(() -> getMemorySize(), () -> config.getMemorySize());
 
 		Map<String, String> environmentVariables = new HashMap<>();
 		if (config.getEnvironment() != null) {
@@ -307,7 +291,13 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 		
 		tagFunction(lambda, config);
 	}
-	
+
+	private <T> T getOrElse(Supplier<T> primary, Supplier<T> secondary) {
+		T primaryValue = primary.get();
+		if(primaryValue == null) {return secondary.get();}
+		return primaryValue;
+	}
+
 	private void createOrUpdateAlias(AWSLambda lambda, String functionVersion) {
 		getLogger().info("Create or Update alias {} for {}", getAlias(), functionVersion);
 		try {

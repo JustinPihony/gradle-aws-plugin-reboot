@@ -154,6 +154,8 @@ public class AWSElasticBeanstalkCreateEnvironmentTask extends ConventionTask { /
 	
 	// simple helper method to not include apache commons lang's StringUtils only for this
 	private boolean isNotBlank(String str) {
-		return str != null && !str.trim().isEmpty();
+		if(str == null) {return false;}
+		String trimmedStr = str.trim();
+		return trimmedStr.length() != 0;
 	}
 }

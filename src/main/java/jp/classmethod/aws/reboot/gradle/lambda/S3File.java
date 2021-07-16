@@ -47,10 +47,16 @@ public class S3File {
 	 * Validates that both bucketName and key are provided.
 	 */
 	public void validate() {
-		boolean missingBucketName = bucketName == null || bucketName.trim().isEmpty();
-		boolean missingKey = key == null || key.trim().isEmpty();
+		boolean missingBucketName = isNullOrBlank(bucketName);
+		boolean missingKey = isNullOrBlank(key);
 		if (missingBucketName || missingKey) {
 			throw new GradleException("bucketName and key are required for an S3File");
 		}
+	}
+
+	private boolean isNullOrBlank(String str) {
+		if(str == null) {return true;}
+		String trimmedStr = str.trim();
+		return trimmedStr.length() == 0;
 	}
 }
