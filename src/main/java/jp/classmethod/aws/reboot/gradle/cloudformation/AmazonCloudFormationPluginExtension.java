@@ -26,6 +26,7 @@ import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.Setter;
 
+import org.gradle.api.tasks.Input;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,67 +55,67 @@ public class AmazonCloudFormationPluginExtension extends BaseRegionAwarePluginEx
 	
 	public static final String NAME = "cloudFormation";
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String stackName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Map<?, ?> stackParams = new HashMap<>();
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Map<?, ?> stackTags = new HashMap<>();
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String cfnRoleArn;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String templateURL;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String onFailure;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private File templateFile;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String templateBucket;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String templateKeyPrefix;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String stackPolicyURL;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private File stackPolicyFile;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String stackPolicyBucket;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String stackPolicyKeyPrefix;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private boolean capabilityIam;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Capability useCapabilityIam;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private boolean terminationProtected;
 	

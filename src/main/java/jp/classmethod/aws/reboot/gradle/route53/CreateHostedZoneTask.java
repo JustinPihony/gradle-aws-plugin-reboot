@@ -23,6 +23,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.route53.AmazonRoute53;
@@ -33,27 +34,27 @@ import com.amazonaws.services.route53.model.HostedZoneConfig;
 
 public class CreateHostedZoneTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String hostedZoneName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String callerReference;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String comment;
 	
 	// after did work
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private CreateHostedZoneResult createHostedZoneResult;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private String hostedZoneId;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private List<String> nameServers;
 	
 	

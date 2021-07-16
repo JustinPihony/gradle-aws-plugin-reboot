@@ -24,28 +24,29 @@ import com.amazonaws.ClientConfiguration;
 import com.amazonaws.services.lambda.AWSLambdaClient;
 
 import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
+import org.gradle.api.tasks.Input;
 
 public class AWSLambdaPluginExtension extends BaseRegionAwarePluginExtension<AWSLambdaClient> {
 	
 	public static final String NAME = "lambda";
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer maxErrorRetry = -1;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer requestTimeout = -1;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer clientExecutionTimeout = -1;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer connectionTimeout = -1;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer socketTimeout = -1;
 	

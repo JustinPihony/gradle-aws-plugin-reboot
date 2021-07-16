@@ -24,6 +24,7 @@ import lombok.Setter;
 
 import org.apache.commons.io.FileUtils;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.cloudformation.AmazonCloudFormation;
@@ -32,15 +33,15 @@ import com.google.common.base.Strings;
 
 public class AmazonCloudFormationStackPolicyTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String stackName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String cfnStackPolicyUrl;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private File cfnStackPolicyFile;
 	

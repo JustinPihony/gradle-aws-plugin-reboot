@@ -30,6 +30,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.lambda.AWSLambda;
@@ -60,66 +61,66 @@ import com.google.common.collect.Maps;
 
 public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String functionName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String role;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Runtime runtime;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String handler;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String functionDescription;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer lambdaTimeout;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer memorySize;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private File zipFile;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private S3File s3File;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private VpcConfigWrapper vpc;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Map<String, String> environment;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Map<String, String> tags;
 
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> layers;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Boolean publish;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private CreateFunctionResult createFunctionResult;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String alias;
 	

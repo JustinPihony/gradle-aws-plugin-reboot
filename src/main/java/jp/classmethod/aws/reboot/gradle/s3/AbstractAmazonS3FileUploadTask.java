@@ -25,34 +25,35 @@ import org.gradle.api.internal.ConventionTask;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.ObjectMetadata;
+import org.gradle.api.tasks.Input;
 
 public abstract class AbstractAmazonS3FileUploadTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String bucketName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String key;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String kmsKeyId;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private File file;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private ObjectMetadata objectMetadata;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String resourceUrl;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private boolean overwrite = false;
 	

@@ -34,19 +34,19 @@ import com.amazonaws.services.lambda.model.AliasRoutingConfiguration;
 public class RoutingConfig {
 	
 	@Input
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Double additionalVersionWeight;
 	
 	@Input
 	@Optional
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Boolean usePreviousVersion;
 	
 	@Input
 	@Optional
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Boolean useNextVersion;
 	
@@ -58,7 +58,7 @@ public class RoutingConfig {
 	 */
 	@Input
 	@Optional
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String additionalVersion;
 	

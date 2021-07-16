@@ -24,12 +24,13 @@ import com.amazonaws.ClientConfiguration;
 import com.amazonaws.services.s3.AmazonS3Client;
 
 import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
+import org.gradle.api.tasks.Input;
 
 public class AmazonS3PluginExtension extends BaseRegionAwarePluginExtension<AmazonS3Client> {
 	
 	public static final String NAME = "s3";
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer maxErrorRetry = -1;
 	

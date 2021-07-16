@@ -19,6 +19,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk;
@@ -26,7 +27,7 @@ import com.amazonaws.services.elasticbeanstalk.model.DeleteApplicationRequest;
 
 public class AWSElasticBeanstalkDeleteApplicationTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String appName;
 	

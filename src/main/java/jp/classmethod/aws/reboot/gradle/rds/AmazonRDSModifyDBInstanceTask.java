@@ -22,6 +22,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.rds.AmazonRDS;
@@ -30,75 +31,75 @@ import com.amazonaws.services.rds.model.ModifyDBInstanceRequest;
 
 public class AmazonRDSModifyDBInstanceTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbInstanceIdentifier;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer allocatedStorage;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbInstanceClass;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String masterUserPassword;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> vpcSecurityGroupIds;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String preferredMaintenanceWindow;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbParameterGroupName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer backupRetentionPeriod;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String preferredBackupWindow;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Boolean multiAZ;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String engineVersion;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Boolean autoMinorVersionUpgrade;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer iops;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String optionGroupName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String storageType;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String tdeCredentialArn;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String tdeCredentialPassword;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private DBInstance dbInstance;
 	
 	

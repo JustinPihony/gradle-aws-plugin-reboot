@@ -19,6 +19,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.ecr.AmazonECR;
@@ -32,11 +33,11 @@ import com.google.common.base.MoreObjects;
 
 public class AmazonECRCreateRepositoryTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String repositoryName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private Repository repository;
 	
 	

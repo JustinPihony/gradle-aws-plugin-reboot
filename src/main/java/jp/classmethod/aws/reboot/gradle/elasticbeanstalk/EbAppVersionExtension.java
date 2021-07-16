@@ -23,24 +23,25 @@ import lombok.Setter;
 import org.gradle.api.Named;
 
 import groovy.lang.Closure;
+import org.gradle.api.tasks.Input;
 
 public class EbAppVersionExtension implements Named {
 	
-	@Setter
+	@Setter(onMethod = @__(@Input))
 	private Object label;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String description = "";
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String bucket;
 	
 	@Setter
 	private Object key;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private File file;
 	

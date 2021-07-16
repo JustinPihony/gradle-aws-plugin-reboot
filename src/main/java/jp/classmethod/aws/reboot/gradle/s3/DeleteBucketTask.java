@@ -20,6 +20,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.AmazonClientException;
@@ -28,15 +29,15 @@ import com.amazonaws.services.s3.model.ObjectListing;
 
 public class DeleteBucketTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	String bucketName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	boolean ifExists;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	boolean deleteObjects;
 	

@@ -20,6 +20,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.AmazonClientException;
@@ -31,19 +32,19 @@ import com.amazonaws.services.ec2.model.ImportKeyPairResult;
 
 public class AmazonEC2ImportKeyTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String keyName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String publicKeyMaterial;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	public boolean ifNotExists;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private ImportKeyPairResult importKeyPairResult;
 	
 	

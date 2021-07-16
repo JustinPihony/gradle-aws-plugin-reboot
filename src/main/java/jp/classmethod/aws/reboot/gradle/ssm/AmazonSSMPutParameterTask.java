@@ -22,6 +22,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.simplesystemsmanagement.AWSSimpleSystemsManagementClient;
@@ -32,7 +33,7 @@ import com.amazonaws.services.simplesystemsmanagement.model.PutParameterResult;
 
 public class AmazonSSMPutParameterTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<Parameter> parameters = new ArrayList<>();
 	
@@ -41,7 +42,7 @@ public class AmazonSSMPutParameterTask extends ConventionTask {
 	 * name will be overwritten with the task execution.
 	 * The default value is false.
 	 */
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private boolean overwrite;
 	
@@ -50,11 +51,11 @@ public class AmazonSSMPutParameterTask extends ConventionTask {
 	 * when prefix = "foo." and parameter name = "bar",
 	 * actual parameter name will be "foo.bar".
 	 */
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String prefix;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private PutParameterResult putParameterResult;
 	
 	

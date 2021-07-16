@@ -43,27 +43,28 @@ import com.amazonaws.services.securitytoken.AWSSecurityTokenService;
 import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClient;
 import com.amazonaws.services.securitytoken.model.GetCallerIdentityRequest;
 import com.google.common.base.Strings;
+import org.gradle.api.tasks.Input;
 
 @RequiredArgsConstructor
 public class AwsPluginExtension {
 	
 	public static final String NAME = "aws";
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private final Project project;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String profileName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String region = Regions.US_EAST_1.getName();
 	
-	@Setter
+	@Setter(onMethod = @__(@Input))
 	private String proxyHost;
 	
-	@Setter
+	@Setter(onMethod = @__(@Input))
 	private int proxyPort = -1;
 	
 	@Setter

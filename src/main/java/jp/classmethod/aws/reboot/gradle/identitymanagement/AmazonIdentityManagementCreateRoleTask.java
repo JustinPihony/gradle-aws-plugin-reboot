@@ -23,6 +23,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.identitymanagement.AmazonIdentityManagement;
@@ -32,23 +33,23 @@ import com.amazonaws.services.identitymanagement.model.CreateRoleResult;
 
 public class AmazonIdentityManagementCreateRoleTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String path = "/";
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String roleName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String assumeRolePolicyDocument;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> policyArns = new ArrayList<>();
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private CreateRoleResult createRole;
 	
 	

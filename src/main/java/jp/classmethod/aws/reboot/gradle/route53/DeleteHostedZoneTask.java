@@ -19,6 +19,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.route53.AmazonRoute53;
@@ -26,7 +27,7 @@ import com.amazonaws.services.route53.model.DeleteHostedZoneRequest;
 
 public class DeleteHostedZoneTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String hostedZoneId;
 	

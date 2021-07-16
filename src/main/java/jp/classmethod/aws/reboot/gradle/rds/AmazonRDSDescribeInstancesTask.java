@@ -24,6 +24,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.AmazonServiceException;
@@ -35,19 +36,19 @@ import com.amazonaws.services.rds.model.Filter;
 
 public class AmazonRDSDescribeInstancesTask extends ConventionTask { // NOPMD
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbInstanceIdentifier;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private int maxRecords = 50;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Map<String, List<String>> filters;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private List<DBInstance> dbInstances;
 	
 	

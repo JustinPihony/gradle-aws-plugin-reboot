@@ -22,6 +22,7 @@ import org.gradle.api.file.EmptyFileVisitor;
 import org.gradle.api.file.FileTree;
 import org.gradle.api.file.FileVisitDetails;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.s3.AmazonS3;
@@ -32,19 +33,19 @@ import groovy.lang.Closure;
 
 public class BulkUploadTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String bucketName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String prefix;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private FileTree source;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Closure<ObjectMetadata> metadataProvider;
 	

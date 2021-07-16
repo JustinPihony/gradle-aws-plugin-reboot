@@ -20,6 +20,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.rds.AmazonRDS;
@@ -28,15 +29,15 @@ import com.amazonaws.services.rds.model.RebootDBInstanceRequest;
 
 public class AmazonRDSRebootDBInstanceTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbInstanceIdentifier;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Boolean forceFailover;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private DBInstance dbInstance;
 	
 	

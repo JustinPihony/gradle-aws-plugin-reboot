@@ -29,6 +29,7 @@ import org.gradle.api.file.EmptyFileVisitor;
 import org.gradle.api.file.FileVisitDetails;
 import org.gradle.api.internal.ConventionTask;
 import org.gradle.api.logging.Logger;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.s3.AmazonS3;
@@ -53,35 +54,35 @@ public class SyncTask extends ConventionTask {
 	}
 	
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String bucketName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String prefix = "";
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private File source;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private boolean delete;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private int threads = 5;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private StorageClass storageClass = StorageClass.Standard;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Closure<ObjectMetadata> metadataProvider;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private CannedAccessControlList acl;
 	
 	

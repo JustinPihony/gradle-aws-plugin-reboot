@@ -32,20 +32,21 @@ import com.amazonaws.services.elasticbeanstalk.model.ListAvailableSolutionStacks
 import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
 
 import groovy.lang.Closure;
+import org.gradle.api.tasks.Input;
 
 public class AwsBeanstalkPluginExtension extends BaseRegionAwarePluginExtension<AWSElasticBeanstalkClient> {
 	
 	public static final String NAME = "beanstalk";
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String appName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String appDesc = "";
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private EbAppVersionExtension version;
 	
 	
@@ -56,7 +57,7 @@ public class AwsBeanstalkPluginExtension extends BaseRegionAwarePluginExtension<
 	}
 	
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private NamedDomainObjectContainer<EbConfigurationTemplateExtension> configurationTemplates;
 	
 	
@@ -65,7 +66,7 @@ public class AwsBeanstalkPluginExtension extends BaseRegionAwarePluginExtension<
 	}
 	
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private EbEnvironmentExtension environment;
 	
 	
@@ -74,7 +75,7 @@ public class AwsBeanstalkPluginExtension extends BaseRegionAwarePluginExtension<
 	}
 	
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Tier tier = Tier.WebServer;
 	

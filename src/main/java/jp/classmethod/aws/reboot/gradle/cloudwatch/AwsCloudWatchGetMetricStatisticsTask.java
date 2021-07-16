@@ -25,6 +25,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.AmazonServiceException;
@@ -36,46 +37,46 @@ import com.amazonaws.services.cloudwatch.model.GetMetricStatisticsResult;
 
 public class AwsCloudWatchGetMetricStatisticsTask extends ConventionTask { // NOPMD
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String metricName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String namespace;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer period;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String statistics;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String extendedStatistics;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Map<String, String> dimensions;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Date startTime;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Date endTime;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String unit;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private List<Datapoint> datapoints;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private String label;
 	
 	

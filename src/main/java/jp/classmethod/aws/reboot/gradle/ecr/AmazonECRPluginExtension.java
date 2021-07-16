@@ -23,12 +23,13 @@ import org.gradle.api.Project;
 import com.amazonaws.services.ecr.AmazonECRClient;
 
 import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
+import org.gradle.api.tasks.Input;
 
 public class AmazonECRPluginExtension extends BaseRegionAwarePluginExtension<AmazonECRClient> {
 	
 	public static final String NAME = "ecr";
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String repositoryName;
 	

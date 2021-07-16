@@ -22,6 +22,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.Nested;
 import org.gradle.api.tasks.TaskAction;
 
@@ -44,11 +45,11 @@ public class AWSLambdaUpdateAliasTask extends ConventionTask {
 	Note that the length constraint applies only to the ARN.
 	If you specify only the function name, it is limited to 64 characters in length.
 	 */
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String functionName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String aliasName;
 	
@@ -56,14 +57,14 @@ public class AWSLambdaUpdateAliasTask extends ConventionTask {
 	Using this parameter you can change the Lambda function version to which the alias points.
 	If you do not specify it, the alias will point by default to $LATEST
 	 */
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String functionVersion;
 	
 	/*
 	You can change the description of the alias using this parameter.
 	 */
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String aliasDescription;
 	
@@ -71,11 +72,11 @@ public class AWSLambdaUpdateAliasTask extends ConventionTask {
 	https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html
 	 */
 	@Nested
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private RoutingConfig routingConfig;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private UpdateAliasResult updateAliasResult;
 	
 	

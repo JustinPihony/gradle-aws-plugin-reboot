@@ -23,6 +23,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.AmazonServiceException;
@@ -34,18 +35,18 @@ import com.amazonaws.services.rds.model.DescribeDBInstancesResult;
 
 public class AmazonRDSDescribeInstanceTask extends ConventionTask { // NOPMD
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbInstanceIdentifier;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> successStatuses = Arrays.asList(
 			"available",
 			"backing-up",
 			"terminated");
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> waitStatuses = Arrays.asList(
 			"creating",
@@ -55,21 +56,21 @@ public class AmazonRDSDescribeInstanceTask extends ConventionTask { // NOPMD
 			"renaming",
 			"resetting-master-credentials");
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private int loopTimeout = 900; // sec
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private int loopWait = 10; // sec
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private boolean found;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private String lastStatus;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private DBInstance dbInstance;
 	
 	

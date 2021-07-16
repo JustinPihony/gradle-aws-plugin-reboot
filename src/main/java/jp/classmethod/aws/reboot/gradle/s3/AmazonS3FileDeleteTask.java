@@ -20,6 +20,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.s3.AmazonS3;
@@ -32,11 +33,11 @@ public class AmazonS3FileDeleteTask extends ConventionTask {
 	}
 	
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	String bucketName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	String key;
 	

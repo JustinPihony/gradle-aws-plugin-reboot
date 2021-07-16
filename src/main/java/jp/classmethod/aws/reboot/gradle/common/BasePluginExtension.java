@@ -25,20 +25,21 @@ import com.amazonaws.AmazonWebServiceClient;
 import com.amazonaws.ClientConfiguration;
 
 import jp.classmethod.aws.reboot.gradle.AwsPluginExtension;
+import org.gradle.api.tasks.Input;
 
 public abstract class BasePluginExtension<T extends AmazonWebServiceClient> {
 	
 	private final Class<T> awsClientClass;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Project project;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String profileName;
 	
-	@Getter(lazy = true, onMethod = @__(@SuppressWarnings("unchecked")))
+	@Getter(lazy = true, onMethod = @__({@SuppressWarnings("unchecked"), @Input}))
 	private final T client = initClient();
 	
 	

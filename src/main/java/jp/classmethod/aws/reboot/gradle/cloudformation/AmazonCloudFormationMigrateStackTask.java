@@ -27,6 +27,7 @@ import lombok.Setter;
 import org.apache.commons.io.FileUtils;
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.AmazonServiceException;
@@ -46,51 +47,51 @@ import com.google.common.base.Strings;
 
 public class AmazonCloudFormationMigrateStackTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String stackName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String cfnTemplateUrl;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private File cfnTemplateFile;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<Parameter> cfnStackParams = new ArrayList<>();
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<Tag> cfnStackTags = new ArrayList<>();
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String cfnRoleArn;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private boolean capabilityIam;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Capability useCapabilityIam;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String cfnStackPolicyUrl;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private File cfnStackPolicyFile;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String cfnOnFailure;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> stableStatuses = Arrays.asList(
 			"CREATE_COMPLETE", "ROLLBACK_COMPLETE", "UPDATE_COMPLETE", "UPDATE_ROLLBACK_COMPLETE");

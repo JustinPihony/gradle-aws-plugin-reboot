@@ -25,6 +25,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.rds.AmazonRDS;
@@ -34,57 +35,51 @@ import com.amazonaws.services.rds.model.Tag;
 
 public class AmazonRDSRestoreDbClusterToPointInTimeTask extends ConventionTask { // NOPMD
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbClusterIdentifier;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String sourceDBClusterIdentifier;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbSubnetGroupName;
 	
-	/*
-	@Getter
-	@Setter
-	private Boolean enableIAMDatabaseAuthentication; // unimplemented
-	 */
-	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String kmsKeyId;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String optionGroupName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private int port;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Date restoreToTime;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String restoreType;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Boolean useLatestRestorableTime;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Map<String, String> tags;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> vpcSecurityGroupIds;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private DBCluster dbCluster;
 	
 	

@@ -24,6 +24,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk;
@@ -36,35 +37,35 @@ import com.amazonaws.services.elasticbeanstalk.model.UpdateEnvironmentRequest;
 
 public class AWSElasticBeanstalkCreateEnvironmentTask extends ConventionTask { // NOPMD
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String appName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String envName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String envDesc = "";
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String cnamePrefix = java.util.UUID.randomUUID().toString();
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String templateName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String versionLabel;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Tier tier = Tier.WebServer;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Map<String, String> tags = new HashMap<String, String>();
 	

@@ -24,6 +24,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.lambda.AWSLambda;
@@ -39,39 +40,39 @@ import com.google.common.collect.Maps;
 
 public class AWSLambdaUpdateFunctionConfigurationTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String functionName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String role;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String handler;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String functionDescription;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer lambdaTimeout;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer memorySize;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Map<String, String> environment;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Map<String, String> tags;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private UpdateFunctionConfigurationResult updateFunctionConfiguration;
 	
 	

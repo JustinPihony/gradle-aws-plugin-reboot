@@ -23,24 +23,25 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.cloudformation.AmazonCloudFormation;
 
 public class AmazonCloudFormationWaitStackStatusTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String stackName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> successStatuses = Arrays.asList(
 			"CREATE_COMPLETE",
 			"UPDATE_COMPLETE",
 			"DELETE_COMPLETE");
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> waitStatuses = Arrays.asList(
 			"CREATE_IN_PROGRESS",
@@ -51,11 +52,11 @@ public class AmazonCloudFormationWaitStackStatusTask extends ConventionTask {
 			"UPDATE_ROLLBACK_IN_PROGRESS",
 			"UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS");
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private int loopTimeout = 900; // sec
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private int loopWait = 10; // sec
 	

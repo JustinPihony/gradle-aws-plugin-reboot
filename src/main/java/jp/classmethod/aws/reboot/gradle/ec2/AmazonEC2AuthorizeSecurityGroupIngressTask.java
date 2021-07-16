@@ -19,6 +19,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.GradleException;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.AmazonServiceException;
@@ -27,15 +28,15 @@ import com.amazonaws.services.ec2.model.AuthorizeSecurityGroupIngressRequest;
 
 public class AmazonEC2AuthorizeSecurityGroupIngressTask extends AbstractAmazonEC2SecurityGroupPermissionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String groupId;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String groupName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Object ipPermissions;
 	

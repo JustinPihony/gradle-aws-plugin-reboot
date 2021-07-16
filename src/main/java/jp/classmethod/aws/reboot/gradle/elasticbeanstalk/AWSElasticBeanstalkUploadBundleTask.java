@@ -29,14 +29,15 @@ import org.gradle.api.Project;
 import com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk;
 
 import jp.classmethod.aws.reboot.gradle.s3.AmazonS3FileUploadTask;
+import org.gradle.api.tasks.Input;
 
 public class AWSElasticBeanstalkUploadBundleTask extends AmazonS3FileUploadTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String extension = "zip";
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private String versionLabel;
 	
 	

@@ -25,6 +25,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk;
@@ -39,15 +40,15 @@ import groovy.json.JsonParserType;
 
 public class AWSElasticBeanstalkCreateConfigurationTemplateTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String appName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Collection<EbConfigurationTemplateExtension> configurationTemplates = new ArrayList<>();
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String defaultSolutionStackName = "64bit Amazon Linux 2013.09 running Tomcat 7 Java 7";
 	

@@ -20,6 +20,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.AmazonClientException;
@@ -35,7 +36,7 @@ public class CreateBucketTask extends ConventionTask {
 	 * http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html
 	 * See also http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html
 	 */
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	public String bucketName;
 	
@@ -45,14 +46,14 @@ public class CreateBucketTask extends ConventionTask {
 	 * See http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region for details
 	 * Also http://bit.ly/2fxwwt5
 	 */
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	public String region;
 	
 	/**
 	 * Create bucket only if it does not exists.
 	 */
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	public boolean ifNotExists;
 	

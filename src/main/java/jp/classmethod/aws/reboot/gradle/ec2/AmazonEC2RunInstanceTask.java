@@ -25,6 +25,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.ec2.AmazonEC2;
@@ -35,39 +36,39 @@ import com.google.common.base.Strings;
 
 public class AmazonEC2RunInstanceTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String ami;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String keyName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> securityGroupIds;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> securityGroups;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String userData;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String instanceType;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String subnetId;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String iamInstanceProfileName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private RunInstancesResult runInstancesResult;
 	
 	

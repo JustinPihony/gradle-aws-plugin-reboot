@@ -24,6 +24,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.rds.AmazonRDS;
@@ -33,138 +34,138 @@ import com.amazonaws.services.rds.model.Tag;
 
 public class AmazonRDSCreateDBInstanceTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbInstanceIdentifier;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer allocatedStorage;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbInstanceClass;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String engine;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String masterUsername;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String masterUserPassword;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> vpcSecurityGroupIds;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbSubnetGroupName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String preferredMaintenanceWindow;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbParameterGroupName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer backupRetentionPeriod;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String preferredBackupWindow;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer port;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Boolean multiAZ;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String engineVersion;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Boolean autoMinorVersionUpgrade;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String licenseModel;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer iops;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String optionGroupName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Boolean publiclyAccessible;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String characterSetName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String storageType;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String tdeCredentialArn;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String tdeCredentialPassword;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Boolean storageEncrypted;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String kmsKeyId;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Boolean copyTagsToSnapshot;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Integer promotionTier;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbClusterIdentifier;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String availabilityZone;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> securityGroups;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private DBInstance dbInstance;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Map<String, String> tags;
 	

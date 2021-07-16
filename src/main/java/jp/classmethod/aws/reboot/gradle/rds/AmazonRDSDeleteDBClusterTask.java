@@ -20,6 +20,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.rds.AmazonRDS;
@@ -29,19 +30,19 @@ import com.amazonaws.services.rds.model.DeleteDBClusterRequest;
 
 public class AmazonRDSDeleteDBClusterTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String dbClusterIdentifier;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private boolean skipFinalSnapshot;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String finalDBSnapshotIdentifier;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private DBCluster dbCluster;
 	
 	

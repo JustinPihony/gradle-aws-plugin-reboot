@@ -27,25 +27,26 @@ import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 
 import groovy.lang.Closure;
+import org.gradle.api.tasks.Input;
 
 public class EbConfigurationTemplateExtension implements Named {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String name;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String desc;
 	
 	@Setter
 	private Object optionSettings;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String solutionStackName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private boolean recreate = false;
 	

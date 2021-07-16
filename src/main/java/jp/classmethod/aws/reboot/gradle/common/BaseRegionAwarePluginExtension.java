@@ -23,10 +23,11 @@ import org.gradle.api.Project;
 import com.amazonaws.AmazonWebServiceClient;
 
 import jp.classmethod.aws.reboot.gradle.AwsPluginExtension;
+import org.gradle.api.tasks.Input;
 
 public class BaseRegionAwarePluginExtension<T extends AmazonWebServiceClient>extends BasePluginExtension<T> {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String region;
 	

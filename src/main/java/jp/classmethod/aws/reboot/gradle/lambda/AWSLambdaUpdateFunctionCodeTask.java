@@ -27,6 +27,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.lambda.AWSLambda;
@@ -35,19 +36,19 @@ import com.amazonaws.services.lambda.model.UpdateFunctionCodeResult;
 
 public class AWSLambdaUpdateFunctionCodeTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String functionName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private File zipFile;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private S3File s3File;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	private UpdateFunctionCodeResult updateFunctionCode;
 	
 	

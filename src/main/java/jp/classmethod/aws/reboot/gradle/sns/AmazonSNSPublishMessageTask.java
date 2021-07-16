@@ -20,6 +20,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.sns.AmazonSNS;
@@ -27,19 +28,19 @@ import com.amazonaws.services.sns.model.PublishRequest;
 
 public class AmazonSNSPublishMessageTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String topicArn;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String message;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String subject;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String messageStructure;
 	

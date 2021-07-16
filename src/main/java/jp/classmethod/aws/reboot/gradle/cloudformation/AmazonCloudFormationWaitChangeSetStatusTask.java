@@ -23,45 +23,46 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.cloudformation.AmazonCloudFormation;
 
 public class AmazonCloudFormationWaitChangeSetStatusTask extends ConventionTask {
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String stackName;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> successStatuses = Arrays.asList(
 			"CREATE_COMPLETE",
 			"DELETE_COMPLETE");
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> waitStatuses = Arrays.asList(
 			"CREATE_IN_PROGRESS",
 			"CREATE_PENDING");
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private int loopTimeout = 900; // sec
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private int loopWait = 10; // sec
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private boolean found;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String lastStatus;
 	
-	@Getter
+	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> printedEvents;
 	
