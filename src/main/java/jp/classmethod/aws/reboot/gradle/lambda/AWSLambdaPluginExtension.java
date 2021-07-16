@@ -19,12 +19,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.Project;
+import org.gradle.api.tasks.Input;
 
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.services.lambda.AWSLambdaClient;
 
 import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
-import org.gradle.api.tasks.Input;
 
 public class AWSLambdaPluginExtension extends BaseRegionAwarePluginExtension<AWSLambdaClient> {
 	

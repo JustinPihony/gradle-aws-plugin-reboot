@@ -22,12 +22,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.Named;
+import org.gradle.api.tasks.Input;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 
 import groovy.lang.Closure;
-import org.gradle.api.tasks.Input;
 
 public class EbConfigurationTemplateExtension implements Named {
 	

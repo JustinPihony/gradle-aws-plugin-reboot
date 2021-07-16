@@ -25,6 +25,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.Project;
+import org.gradle.api.tasks.Input;
 
 import com.amazonaws.AmazonWebServiceClient;
 import com.amazonaws.ClientConfiguration;
@@ -43,7 +44,6 @@ import com.amazonaws.services.securitytoken.AWSSecurityTokenService;
 import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClient;
 import com.amazonaws.services.securitytoken.model.GetCallerIdentityRequest;
 import com.google.common.base.Strings;
-import org.gradle.api.tasks.Input;
 
 @RequiredArgsConstructor
 public class AwsPluginExtension {

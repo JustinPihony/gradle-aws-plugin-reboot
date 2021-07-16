@@ -64,6 +64,7 @@ public abstract class StatusWaiter {
 	
 	private final int loopWait;
 	
+	
 	protected StatusWaiter(AmazonCloudFormation cfn, String stackName, Logger logger, int loopTimeout,
 			int loopWait) {
 		this.cfn = cfn;
@@ -85,15 +86,15 @@ public abstract class StatusWaiter {
 			}
 			try {
 				lastStatus = getStatus();
-
+				
 				// Get stack events info
 				List<StackEvent> stackEvents = getStackEvents(stackName);
-
+				
 				found = true;
-
+				
 				// Always output new events; might be the last time you can
 				printEvents(stackEvents, printedEvents);
-
+				
 				if (checkForSuccess(lastStatus)) {
 					break;
 				}
@@ -107,13 +108,13 @@ public abstract class StatusWaiter {
 			}
 		}
 	}
-
+	
 	private boolean checkForSuccess(GetStatusResult lastStatus) throws InterruptedException {
 		// If completed successfully, output status then break out of while loop
 		if (lastStatus == GetStatusResult.SUCCESS) {
 			logger.info("Status of {} is now {}.", describeSubject(), lastStatus);
 			return true;
-
+			
 			// Else if still going, sleep some then loop again
 		} else if (lastStatus == GetStatusResult.WAITING) {
 			logger.info("Status of {} is {}...", describeSubject(), lastStatus);
@@ -124,7 +125,7 @@ public abstract class StatusWaiter {
 		}
 		return false;
 	}
-
+	
 	private List<StackEvent> getStackEvents(String stackName) {
 		DescribeStackEventsRequest request = new DescribeStackEventsRequest().withStackName(stackName);
 		DescribeStackEventsResult result = cfn.describeStackEvents(request);

@@ -22,6 +22,7 @@ import lombok.Setter;
 
 import org.gradle.api.NamedDomainObjectContainer;
 import org.gradle.api.Project;
+import org.gradle.api.tasks.Input;
 
 import com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalkClient;
 import com.amazonaws.services.elasticbeanstalk.model.DescribeEnvironmentsRequest;
@@ -32,7 +33,6 @@ import com.amazonaws.services.elasticbeanstalk.model.ListAvailableSolutionStacks
 import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
 
 import groovy.lang.Closure;
-import org.gradle.api.tasks.Input;
 
 public class AwsBeanstalkPluginExtension extends BaseRegionAwarePluginExtension<AWSElasticBeanstalkClient> {
 	

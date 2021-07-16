@@ -109,7 +109,7 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 	@Getter(onMethod = @__(@Input))
 	@Setter
 	private Map<String, String> tags;
-
+	
 	@Getter(onMethod = @__(@Input))
 	@Setter
 	private List<String> layers;
@@ -137,9 +137,9 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 		String functionName = getFunctionName();
 		File zipFile = getZipFile();
 		S3File s3File = getS3File();
-
+		
 		validateCreateOrUpdateFunctionVariables(functionName, zipFile, s3File);
-
+		
 		AWSLambdaPluginExtension ext = getProject().getExtensions().getByType(AWSLambdaPluginExtension.class);
 		AWSLambda lambda = ext.getClient();
 		
@@ -160,12 +160,12 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 			createFunction(lambda);
 		}
 	}
-
+	
 	private void validateCreateOrUpdateFunctionVariables(String functionName, File zipFile, S3File s3File) {
 		if (functionName == null) {
 			throw new GradleException("functionName is required");
 		}
-
+		
 		if ((zipFile == null && s3File == null) || (zipFile != null && s3File != null)) {
 			throw new GradleException("exactly one of zipFile or s3File is required");
 		}
@@ -173,7 +173,7 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 			s3File.validate();
 		}
 	}
-
+	
 	private void createFunction(AWSLambda lambda) throws IOException {
 		// to enable conventionMappings feature
 		File zipFile = getZipFile();
@@ -252,19 +252,19 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 	
 	private void updateFunctionConfiguration(AWSLambda lambda, FunctionConfiguration config) {
 		String updateFunctionName = getOrElse(() -> getFunctionName(), () -> config.getFunctionName());
-
+		
 		String updateRole = getOrElse(() -> getRole(), () -> config.getRole());
-
+		
 		Runtime updateRuntime = getOrElse(() -> getRuntime(), () -> Runtime.fromValue(config.getRuntime()));
-
+		
 		String updateHandler = getOrElse(() -> getHandler(), () -> config.getHandler());
-
+		
 		String updateDescription = getOrElse(() -> getFunctionDescription(), () -> config.getDescription());
-
+		
 		Integer updateTimeout = getOrElse(() -> getLambdaTimeout(), () -> config.getTimeout());
-
+		
 		Integer updateMemorySize = getOrElse(() -> getMemorySize(), () -> config.getMemorySize());
-
+		
 		Map<String, String> environmentVariables = new HashMap<>();
 		if (config.getEnvironment() != null) {
 			environmentVariables.putAll(config.getEnvironment().getVariables());
@@ -291,7 +291,7 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 		
 		tagFunction(lambda, config);
 	}
-
+	
 	private <T> T getOrElse(Supplier<T> primary, Supplier<T> secondary) {
 		T primaryValue = primary.get();
 		if (primaryValue == null) {
@@ -299,7 +299,7 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 		}
 		return primaryValue;
 	}
-
+	
 	private void createOrUpdateAlias(AWSLambda lambda, String functionVersion) {
 		getLogger().info("Create or Update alias {} for {}", getAlias(), functionVersion);
 		try {

@@ -25,8 +25,8 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
-import org.gradle.api.tasks.TaskAction;
 import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.lambda.AWSLambda;
 import com.amazonaws.services.lambda.model.InvocationType;
@@ -39,7 +39,7 @@ import com.google.common.io.Files;
 import groovy.lang.Closure;
 
 public class AWSLambdaInvokeTask extends ConventionTask {
-
+	
 	@Getter(onMethod = @__(@Input))
 	@Setter
 	private String functionName;

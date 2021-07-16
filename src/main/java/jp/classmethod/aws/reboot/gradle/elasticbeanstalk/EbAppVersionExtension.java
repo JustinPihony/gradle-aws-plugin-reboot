@@ -21,9 +21,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.Named;
+import org.gradle.api.tasks.Input;
 
 import groovy.lang.Closure;
-import org.gradle.api.tasks.Input;
 
 public class EbAppVersionExtension implements Named {
 	

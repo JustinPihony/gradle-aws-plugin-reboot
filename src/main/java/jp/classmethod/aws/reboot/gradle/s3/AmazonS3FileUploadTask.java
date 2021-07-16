@@ -43,9 +43,9 @@ public class AmazonS3FileUploadTask extends AbstractAmazonS3FileUploadTask {
 		String key = getKey();
 		File file = getFile();
 		String kmsKeyId = getKmsKeyId();
-
+		
 		validateUploadParameters(bucketName, key, file);
-
+		
 		AmazonS3PluginExtension ext = getProject().getExtensions().getByType(AmazonS3PluginExtension.class);
 		AmazonS3 s3 = ext.getClient();
 		
@@ -65,7 +65,7 @@ public class AmazonS3FileUploadTask extends AbstractAmazonS3FileUploadTask {
 		}
 		setResourceUrl(s3.getUrl(bucketName, key).toString());
 	}
-
+	
 	private void validateUploadParameters(String bucketName, String key, File file) {
 		if (bucketName == null) {
 			throw new GradleException("bucketName is not specified");
@@ -80,7 +80,7 @@ public class AmazonS3FileUploadTask extends AbstractAmazonS3FileUploadTask {
 			throw new GradleException("file must be regular file");
 		}
 	}
-
+	
 	private String md5() throws IOException {
 		return Files.hash(getFile(), Hashing.md5()).toString();
 	}

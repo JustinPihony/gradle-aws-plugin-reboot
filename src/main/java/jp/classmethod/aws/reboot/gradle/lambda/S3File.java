@@ -53,7 +53,7 @@ public class S3File {
 			throw new GradleException("bucketName and key are required for an S3File");
 		}
 	}
-
+	
 	private boolean isNullOrBlank(String str) {
 		if (str == null) {
 			return true;

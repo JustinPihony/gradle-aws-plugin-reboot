@@ -25,11 +25,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.Project;
+import org.gradle.api.tasks.Input;
 
 import com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk;
 
 import jp.classmethod.aws.reboot.gradle.s3.AmazonS3FileUploadTask;
-import org.gradle.api.tasks.Input;
 
 public class AWSElasticBeanstalkUploadBundleTask extends AmazonS3FileUploadTask {
 	

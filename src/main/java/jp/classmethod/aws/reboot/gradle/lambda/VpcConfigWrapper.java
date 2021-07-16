@@ -21,9 +21,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.GradleException;
+import org.gradle.api.tasks.Input;
 
 import com.amazonaws.services.lambda.model.VpcConfig;
-import org.gradle.api.tasks.Input;
 
 /**
  * <p>

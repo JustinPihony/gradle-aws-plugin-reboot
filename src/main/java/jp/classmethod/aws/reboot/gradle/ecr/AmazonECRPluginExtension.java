@@ -19,11 +19,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.Project;
+import org.gradle.api.tasks.Input;
 
 import com.amazonaws.services.ecr.AmazonECRClient;
 
 import jp.classmethod.aws.reboot.gradle.common.BaseRegionAwarePluginExtension;
-import org.gradle.api.tasks.Input;
 
 public class AmazonECRPluginExtension extends BaseRegionAwarePluginExtension<AmazonECRClient> {
 	

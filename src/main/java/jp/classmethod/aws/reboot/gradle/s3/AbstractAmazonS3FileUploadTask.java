@@ -21,11 +21,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.internal.ConventionTask;
+import org.gradle.api.tasks.Input;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.ObjectMetadata;
-import org.gradle.api.tasks.Input;
 
 public abstract class AbstractAmazonS3FileUploadTask extends ConventionTask {
 	

@@ -15,17 +15,18 @@
  */
 package jp.classmethod.aws.reboot.gradle.common;
 
+import javax.annotation.Nullable;
+
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.annotation.Nullable;
 import org.gradle.api.Project;
+import org.gradle.api.tasks.Input;
 
 import com.amazonaws.AmazonWebServiceClient;
 import com.amazonaws.ClientConfiguration;
 
 import jp.classmethod.aws.reboot.gradle.AwsPluginExtension;
-import org.gradle.api.tasks.Input;
 
 public abstract class BasePluginExtension<T extends AmazonWebServiceClient> {
 	
@@ -39,7 +40,10 @@ public abstract class BasePluginExtension<T extends AmazonWebServiceClient> {
 	@Setter
 	private String profileName;
 	
-	@Getter(lazy = true, onMethod = @__({@SuppressWarnings("unchecked"), @Input}))
+	@Getter(lazy = true, onMethod = @__({
+		@SuppressWarnings("unchecked"),
+		@Input
+	}))
 	private final T client = initClient();
 	
 	
