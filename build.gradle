@@ -5,7 +5,6 @@ buildscript {
 		maven { url "https://plugins.gradle.org/m2/" }
 	}
 	dependencies {
-		classpath "de.thetaphi:forbiddenapis:2.5"
 		classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.14"
 		classpath "com.gradle.publish:plugin-publish-plugin:0.11.0"
 	}
@@ -17,6 +16,7 @@ plugins {
 	id "com.github.spotbugs" version "4.7.2"
 	id 'de.aaschmid.cpd' version '3.2'
 	id "com.diffplug.spotless" version "5.14.1"
+	id "de.thetaphi.forbiddenapis" version "3.1"
 }
 
 group = "jp.classmethod.aws.reboot"
@@ -35,7 +35,6 @@ defaultTasks "clean", "build"
 apply plugin: "checkstyle"
 apply plugin: "com.github.spotbugs"
 apply plugin: "jacoco"
-apply plugin: "de.thetaphi.forbiddenapis"
 
 // compiler
 sourceCompatibility = 1.8
