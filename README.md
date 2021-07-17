@@ -4,7 +4,7 @@ Gradle AWS Plugin
 [This is a reboot of](https://github.com/classmethod/gradle-aws-plugin) https://github.com/classmethod/gradle-aws-plugin
 
 [![CI Status](https://img.shields.io/circleci/build/github/JustinPihony/gradle-aws-plugin-reboot/master)](https://app.circleci.com/pipelines/github/JustinPihony/gradle-aws-plugin-reboot?branch=master)
-[![Join the chat at https://gitter.im/gradle-aws-plugin-reboot/Lobby](https://badges.gitter.im/gradle-aws-plugin-reboot/Lobby.svg)](https://gitter.im/gradle-aws-plugin-reboot/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/gradle-aws-plugin-reboot/community](https://badges.gitter.im/gradle-aws-plugin-reboot/community.svg)](https://gitter.im/gradle-aws-plugin-reboot/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Gradle Plugin Portal](https://img.shields.io/maven-metadata/v?label=Plugin+Portal&metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Fjp%2Fclassmethod%2Faws%2Freboot%2Fjp.classmethod.aws.reboot.gradle.plugin%2Fmaven-metadata.xml)](https://plugins.gradle.org/plugin/jp.classmethod.aws.reboot)
 
 Gradle plugin to manage AWS resources.
