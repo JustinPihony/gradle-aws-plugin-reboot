@@ -30,6 +30,8 @@ import org.gradle.api.file.FileVisitDetails;
 import org.gradle.api.internal.ConventionTask;
 import org.gradle.api.logging.Logger;
 import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.InputDirectory;
+import org.gradle.api.tasks.Optional;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.s3.AmazonS3;
@@ -62,11 +64,11 @@ public class SyncTask extends ConventionTask {
 	@Setter
 	private String prefix = "";
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@InputDirectory))
 	@Setter
 	private File source;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__({@Input}))
 	@Setter
 	private boolean delete;
 	
@@ -78,11 +80,11 @@ public class SyncTask extends ConventionTask {
 	@Setter
 	private StorageClass storageClass = StorageClass.Standard;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__({@Input, @Optional}))
 	@Setter
 	private Closure<ObjectMetadata> metadataProvider;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__({@Input, @Optional}))
 	private CannedAccessControlList acl;
 	
 	
@@ -103,7 +105,7 @@ public class SyncTask extends ConventionTask {
 		if (source == null) {
 			throw new GradleException("source is not specified");
 		}
-		if (source.isDirectory() == false) {
+		if (!source.isDirectory()) {
 			throw new GradleException("source must be directory");
 		}
 		
