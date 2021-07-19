@@ -19,7 +19,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.GradleException;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.AmazonServiceException;
@@ -28,11 +28,11 @@ import com.amazonaws.services.ec2.model.RevokeSecurityGroupEgressRequest;
 
 public class AmazonEC2RevokeSecurityGroupEgressTask extends AbstractAmazonEC2SecurityGroupPermissionTask {
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String groupId;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private Object ipPermissions;
 	

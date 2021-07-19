@@ -19,7 +19,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.internal.ConventionTask;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.AmazonServiceException;
@@ -31,15 +31,15 @@ import com.amazonaws.services.elasticbeanstalk.model.TerminateEnvironmentRequest
 
 public class AWSElasticBeanstalkTerminateEnvironmentTask extends ConventionTask {
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String appName;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String envName;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String envId;
 	

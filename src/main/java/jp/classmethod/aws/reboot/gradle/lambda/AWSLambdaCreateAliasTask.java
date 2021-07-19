@@ -22,7 +22,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.lambda.AWSLambda;
@@ -43,11 +43,11 @@ public class AWSLambdaCreateAliasTask extends ConventionTask {
 	Note that the length constraint applies only to the ARN.
 	If you specify only the function name, it is limited to 64 characters in length.
 	 */
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String functionName;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String aliasName;
 	
@@ -55,25 +55,25 @@ public class AWSLambdaCreateAliasTask extends ConventionTask {
 	Using this parameter you can change the Lambda function version to which the alias points.
 	If you do not specify it, the alias will point by default to $LATEST
 	 */
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String functionVersion;
 	
 	/*
 	You can change the description of the alias using this parameter.
 	 */
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String aliasDescription;
 	
 	/*
 	https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html
 	 */
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private RoutingConfig routingConfig;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	private CreateAliasResult createAliasResult;
 	
 	

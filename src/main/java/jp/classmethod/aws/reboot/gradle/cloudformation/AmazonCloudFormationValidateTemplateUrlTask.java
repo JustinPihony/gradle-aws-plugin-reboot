@@ -22,12 +22,12 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 import org.gradle.api.tasks.TaskAction;
 
 public class AmazonCloudFormationValidateTemplateUrlTask extends ConventionTask {
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String cfnTemplateUrl;
 	

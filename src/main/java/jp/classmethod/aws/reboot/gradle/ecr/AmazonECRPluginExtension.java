@@ -19,7 +19,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.Project;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 
 import com.amazonaws.services.ecr.AmazonECRClient;
 
@@ -29,7 +29,7 @@ public class AmazonECRPluginExtension extends BaseRegionAwarePluginExtension<Ama
 	
 	public static final String NAME = "ecr";
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String repositoryName;
 	

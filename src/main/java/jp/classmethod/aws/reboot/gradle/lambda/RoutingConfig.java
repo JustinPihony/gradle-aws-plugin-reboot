@@ -23,6 +23,7 @@ import lombok.Setter;
 import org.gradle.api.GradleException;
 import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.Optional;
+import org.gradle.api.tasks.Internal;
 
 import com.amazonaws.services.lambda.model.AliasRoutingConfiguration;
 
@@ -34,19 +35,19 @@ import com.amazonaws.services.lambda.model.AliasRoutingConfiguration;
 public class RoutingConfig {
 	
 	@Input
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private Double additionalVersionWeight;
 	
 	@Input
 	@Optional
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private Boolean usePreviousVersion;
 	
 	@Input
 	@Optional
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private Boolean useNextVersion;
 	
@@ -58,7 +59,7 @@ public class RoutingConfig {
 	 */
 	@Input
 	@Optional
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String additionalVersion;
 	

@@ -25,7 +25,6 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.Project;
-import org.gradle.api.tasks.Input;
 
 import com.amazonaws.AmazonWebServiceClient;
 import com.amazonaws.ClientConfiguration;
@@ -44,27 +43,29 @@ import com.amazonaws.services.securitytoken.AWSSecurityTokenService;
 import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClient;
 import com.amazonaws.services.securitytoken.model.GetCallerIdentityRequest;
 import com.google.common.base.Strings;
+import org.gradle.api.tasks.Internal;
+import org.gradle.api.tasks.Optional;
 
 @RequiredArgsConstructor
 public class AwsPluginExtension {
 	
 	public static final String NAME = "aws";
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	private final Project project;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String profileName;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String region = Regions.US_EAST_1.getName();
 	
-	@Setter(onMethod = @__(@Input))
+	@Setter
 	private String proxyHost;
 	
-	@Setter(onMethod = @__(@Input))
+	@Setter
 	private int proxyPort = -1;
 	
 	@Setter

@@ -22,7 +22,7 @@ import lombok.Setter;
 
 import org.gradle.api.NamedDomainObjectContainer;
 import org.gradle.api.Project;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 
 import com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalkClient;
 import com.amazonaws.services.elasticbeanstalk.model.DescribeEnvironmentsRequest;
@@ -38,15 +38,15 @@ public class AwsBeanstalkPluginExtension extends BaseRegionAwarePluginExtension<
 	
 	public static final String NAME = "beanstalk";
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String appName;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String appDesc = "";
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	private EbAppVersionExtension version;
 	
 	
@@ -57,7 +57,7 @@ public class AwsBeanstalkPluginExtension extends BaseRegionAwarePluginExtension<
 	}
 	
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	private NamedDomainObjectContainer<EbConfigurationTemplateExtension> configurationTemplates;
 	
 	
@@ -66,7 +66,7 @@ public class AwsBeanstalkPluginExtension extends BaseRegionAwarePluginExtension<
 	}
 	
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	private EbEnvironmentExtension environment;
 	
 	
@@ -75,7 +75,7 @@ public class AwsBeanstalkPluginExtension extends BaseRegionAwarePluginExtension<
 	}
 	
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private Tier tier = Tier.WebServer;
 	

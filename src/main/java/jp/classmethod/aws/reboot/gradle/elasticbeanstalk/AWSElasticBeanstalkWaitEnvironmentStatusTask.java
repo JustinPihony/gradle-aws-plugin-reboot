@@ -23,7 +23,7 @@ import lombok.Setter;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.internal.ConventionTask;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.AmazonServiceException;
@@ -34,32 +34,32 @@ import com.amazonaws.services.elasticbeanstalk.model.EnvironmentDescription;
 
 public class AWSElasticBeanstalkWaitEnvironmentStatusTask extends ConventionTask { // NOPMD
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String appName;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String envName;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private List<String> successStatuses = Arrays.asList(
 			"Ready",
 			"Terminated");
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private List<String> waitStatuses = Arrays.asList(
 			"Launching",
 			"Updating",
 			"Terminating");
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private int loopTimeout = 900; // sec
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private int loopWait = 10; // sec
 	

@@ -25,7 +25,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.Project;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 
 import com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk;
 
@@ -33,11 +33,11 @@ import jp.classmethod.aws.reboot.gradle.s3.AmazonS3FileUploadTask;
 
 public class AWSElasticBeanstalkUploadBundleTask extends AmazonS3FileUploadTask {
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String extension = "zip";
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	private String versionLabel;
 	
 	

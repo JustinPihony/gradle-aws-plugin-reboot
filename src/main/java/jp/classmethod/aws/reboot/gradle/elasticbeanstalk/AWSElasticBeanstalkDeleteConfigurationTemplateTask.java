@@ -19,7 +19,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.internal.ConventionTask;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk;
@@ -27,11 +27,11 @@ import com.amazonaws.services.elasticbeanstalk.model.DeleteConfigurationTemplate
 
 public class AWSElasticBeanstalkDeleteConfigurationTemplateTask extends ConventionTask {
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String applicationName;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String templateName;
 	

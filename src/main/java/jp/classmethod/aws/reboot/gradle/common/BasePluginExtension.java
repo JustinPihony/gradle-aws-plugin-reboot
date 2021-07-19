@@ -21,7 +21,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.Project;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 
 import com.amazonaws.AmazonWebServiceClient;
 import com.amazonaws.ClientConfiguration;
@@ -32,17 +32,17 @@ public abstract class BasePluginExtension<T extends AmazonWebServiceClient> {
 	
 	private final Class<T> awsClientClass;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private Project project;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String profileName;
 	
 	@Getter(lazy = true, onMethod = @__({
 		@SuppressWarnings("unchecked"),
-		@Input
+		@Internal
 	}))
 	private final T client = initClient();
 	

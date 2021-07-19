@@ -21,7 +21,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.GradleException;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 
 import com.amazonaws.services.lambda.model.VpcConfig;
 
@@ -32,11 +32,11 @@ import com.amazonaws.services.lambda.model.VpcConfig;
  */
 public class VpcConfigWrapper {
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private Collection<String> subnetIds;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private Collection<String> securityGroupIds;
 	

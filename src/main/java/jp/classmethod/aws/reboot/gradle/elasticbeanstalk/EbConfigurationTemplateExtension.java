@@ -22,7 +22,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.Named;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
@@ -31,22 +31,22 @@ import groovy.lang.Closure;
 
 public class EbConfigurationTemplateExtension implements Named {
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String name;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String desc;
 	
 	@Setter
 	private Object optionSettings;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String solutionStackName;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private boolean recreate = false;
 	

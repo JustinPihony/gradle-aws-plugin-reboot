@@ -19,7 +19,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.Project;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 
 import com.amazonaws.AmazonWebServiceClient;
 
@@ -27,7 +27,7 @@ import jp.classmethod.aws.reboot.gradle.AwsPluginExtension;
 
 public class BaseRegionAwarePluginExtension<T extends AmazonWebServiceClient>extends BasePluginExtension<T> {
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String region;
 	

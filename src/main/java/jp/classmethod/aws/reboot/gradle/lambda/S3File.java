@@ -19,19 +19,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.GradleException;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 
 public class S3File {
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String bucketName;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String key;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private String objectVersion;
 	

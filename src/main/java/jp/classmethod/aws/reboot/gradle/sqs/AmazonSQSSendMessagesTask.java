@@ -24,7 +24,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.GradleException;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 import org.gradle.api.tasks.TaskAction;
 
 import com.amazonaws.services.sqs.AmazonSQS;
@@ -36,7 +36,7 @@ public class AmazonSQSSendMessagesTask extends AbstractAmazonSQSTask {
 	
 	private static final int MAX_MESSAGE_SEND_BATCH_SIZE = 10;
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private Stream<String> messages;
 	

@@ -19,7 +19,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.gradle.api.Project;
-import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.Internal;
 
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.services.s3.AmazonS3Client;
@@ -30,7 +30,7 @@ public class AmazonS3PluginExtension extends BaseRegionAwarePluginExtension<Amaz
 	
 	public static final String NAME = "s3";
 	
-	@Getter(onMethod = @__(@Input))
+	@Getter(onMethod = @__(@Internal))
 	@Setter
 	private Integer maxErrorRetry = -1;
 	
