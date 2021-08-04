@@ -218,6 +218,7 @@ dependencies {
 	implementation "com.amazonaws:aws-java-sdk-cloudformation:$awsJavaSdkVersion"
 	implementation "com.amazonaws:aws-java-sdk-lambda:$awsJavaSdkVersion"
 	implementation "com.amazonaws:aws-java-sdk-iam:$awsJavaSdkVersion"
+	implementation "com.amazonaws:aws-java-sdk-secretsmanager:$awsJavaSdkVersion"
 	implementation "com.amazonaws:aws-java-sdk-sqs:$awsJavaSdkVersion"
 	implementation "com.amazonaws:aws-java-sdk-sns:$awsJavaSdkVersion"
 	implementation "com.amazonaws:aws-java-sdk-ecr:$awsJavaSdkVersion"
