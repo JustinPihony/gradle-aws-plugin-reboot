@@ -72,6 +72,8 @@ public class AmazonSecretsManagerGetSecretValueTask extends ConventionTask {
 		GetSecretValueRequest request = new GetSecretValueRequest().withSecretId(secretName);
 		
 		GetSecretValueResult result = sm.getSecretValue(request);
+
+		destination.getParentFile().mkdirs();
 		
 		try {
 			Files.write(destination.toPath(), result.getSecretString().getBytes(StandardCharsets.UTF_8));
