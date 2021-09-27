@@ -69,6 +69,8 @@ Current Features / Supported AWS Products
   * Attach role policy
 * ELB
   * (TBD)
+* Secrets Manager
+  * Get secret value 
 * SQS
   * Send messages
   * Delete messages
@@ -411,6 +413,17 @@ task publishJsonMessage(type: AmazonSNSPublishMessageTask) {
 }
 ```
 Look at [SNS example](samples/10-sns) for more information.
+
+### Secrets Manager
+
+```groovy
+apply plugin: "jp.classmethod.aws.secretsmanager"
+
+task retrieveSecrets(type: AmazonSecretsManagerGetSecretValueTask) {
+	secretName 'my-app-secrets'
+	destination file('application-secrets.json')
+}
+```
 
 License
 -------
