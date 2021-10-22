@@ -125,6 +125,10 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 	@Setter
 	private String alias;
 	
+	@Getter(onMethod = @__(@Internal))
+	@Setter
+	private List<String> architectures;
+	
 	
 	public AWSLambdaMigrateFunctionTask() {
 		setDescription("Create / Update Lambda function.");
@@ -207,6 +211,7 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 			.withEnvironment(new Environment().withVariables(getEnvironment()))
 			.withTags(getTags())
 			.withLayers(getLayers())
+			.withArchitectures(getArchitectures())
 			.withCode(functionCode);
 		createFunctionResult = lambda.createFunction(request);
 		getLogger().info("Create Lambda function requested: {}", createFunctionResult.getFunctionArn());
@@ -283,6 +288,7 @@ public class AWSLambdaMigrateFunctionTask extends ConventionTask {
 			.withVpcConfig(getVpcConfig())
 			.withEnvironment(new Environment().withVariables(environmentVariables))
 			.withLayers(getLayers())
+			.withArchitectures(getArchitectures())
 			.withMemorySize(updateMemorySize);
 		
 		UpdateFunctionConfigurationResult updateFunctionConfiguration = lambda.updateFunctionConfiguration(request);
